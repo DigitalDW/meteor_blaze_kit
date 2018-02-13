@@ -36,8 +36,8 @@
 <p> Assez simple, non? </p>
 <h3> Templating avec JavaScript </h3>
 <p> Comme mentionné ci-desssu, l'avantage des templates est la possibilité de modifier leur contenur via un script JavaScript. Toujours dans la même idée que le précédent, cet <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body2.html"> exemple </a> montre que le template "bonjour" n'est même plus définit en HTML, à la place du contenu de la balise p, on trouve {{texte}}. De même pour cette formulation étrange: </p>
-&lt;ul&gt;
-  {{#each elem}}
-    {{>liste}}
-  {{/each}}
-&lt;/ul&gt;
+&lt;ul&gt; <br/>
+&#32;&#32;{{#each elem}} <br/>
+&#32;&#32;&#32;&#32;{{>liste}} <br/>
+&#32;&#32;{{/each}} <br/>
+&lt;/ul&gt; <br/>
