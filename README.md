@@ -25,7 +25,7 @@
 <ul>
 <h3> Liste des sujets </h3>
 <ul>
-  <li> <a href="#templates">Les templates</a></li>
+  <li> <a href="#les-templates">Les templates</a></li>
 </ul>
 <br/>
 <br/>
