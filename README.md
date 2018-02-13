@@ -23,3 +23,12 @@
   <li> Chaque exercice/exemple est détaillé ici </li>
   <li> Des liens directs vers les bons fichiers seront mis à disposition avec chaque exercice/exemple </li>
 <ul>
+<h3> Liste des sujets </h3>
+<ul>
+  <li> <a href="#templates">Les templates</a></li>
+</ul>
+<br/>
+<br/>
+<h2 id="template"> Les templates </h2>
+<h3> Qu'est-ce qu'un template? </h3>
+<p> Un template est une façon de créer des éléments en HTML, des les ajouter dans le corps de l'application et surtout de les modifier via le JavaScript. En HTML, un template se présente sous la forme d'une balise <template> qui prend un attribut "nom". Ce nom sera utilisé pour intégrer le template dans le HTML avec la notation suivante {{> monTemplate}}. C'est aussi avec ce nom que l'on référencera le template dans le JavaScript. </p>
