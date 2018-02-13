@@ -37,7 +37,8 @@
 <h3> Templating avec JavaScript </h3>
 <p> Comme mentionné ci-desssu, l'avantage des templates est la possibilité de modifier leur contenur via un script JavaScript. Toujours dans la même idée que le précédent, cet <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body2.html"> exemple </a> montre que le template "bonjour" n'est même plus définit en HTML, à la place du contenu de la balise p, on trouve {{texte}}. De même pour cette formulation étrange: </p>
 &lt;ul&gt; <br/>
-&nbsp;{{#each elem}} <br/>
-{{>liste}} <br/>
-{{/each}} <br/>
+&nbsp;&nbsp;{{#each elem}} <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{{>liste}} <br/>
+&nbsp;&nbsp;{{/each}} <br/>
 &lt;/ul&gt; <br/>
+<p> Ces 5 lignes de codes introduisent la notion de logique dans le templating: {{#each}}, qui sert de boucle, et, par exemple, {{#if}}, pas visible dans l'exemple mais néanmoins existant et utilisé, permettent d'ajouter de la logique et des conditions. Ici, comme le précise le commentaire, la logique est la suivante: pour chanque (each) élément de ma liste, ajouter un template {{>liste}}, qui contient une balise li. Ainsi, le programme va chercher tous les éléments correspondants dans le JavaScript et va ajouter une balise li par élément. On peut ajouter un élément à la liste dans le JavaScript et la page se mettera à jour pour accueillir le nouvel élément </p> 
