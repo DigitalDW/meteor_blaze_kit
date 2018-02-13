@@ -20,8 +20,8 @@
 </ul>
 <p> Tout d'abord, quelques informations concernant l'utilisation du kit: <p>
 <ul>
-  <li> Chaque exercice/exemple est détaillé ci-dessous </li>
-  <li> Des liens directs vers les bons fichiers seront mis à disposition avec chaque exercice/exemple </li>
+  <li> Chaque concept est détaillé ci-dessous </li>
+  <li> Des liens directs vers les bons fichiers seront mis à disposition avec chaque exemple </li>
   <li> Pour tester le différents codes, il suffit de télécharger le projet et de changer le chiffre de body#.js à la ligne suivante (selon le code que l'on souhaite exécuter): import '../imports/ui/<b>body.js</b>'; dans main.js. (par défaut et pour le premier exemple, il faut entrer "body.js")</li>
 <ul>
 <h3> Liste des sujets </h3>
