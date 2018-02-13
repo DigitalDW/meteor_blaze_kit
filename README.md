@@ -40,5 +40,5 @@
 &nbsp;&nbsp;{{#each elem}} <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;{{>liste}} <br/>
 &nbsp;&nbsp;{{/each}} <br/>
-&lt;/ul&gt; <br/>
+&lt;/ul&gt; <br/><br/>
 <p> Ces 5 lignes de codes introduisent la notion de logique dans le templating: {{#each}}, qui sert de boucle, et, par exemple, {{#if}}, pas visible dans l'exemple mais néanmoins existant et utilisé, permettent d'ajouter de la logique et des conditions. Ici, comme le précise le commentaire, la logique est la suivante: pour chanque (each) élément de ma liste, ajouter un template {{>liste}}, qui contient une balise li. Ainsi, le programme va chercher tous les éléments correspondants dans le JavaScript et va ajouter une balise li par élément. On peut ajouter un élément à la liste dans le JavaScript et la page se mettera à jour pour accueillir le nouvel élément </p> 
