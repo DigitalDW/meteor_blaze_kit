@@ -34,4 +34,10 @@
 <h3> Qu'est-ce qu'un template? </h3>
 <p> Un template est une façon de créer des éléments en HTML, des les ajouter dans le corps de l'application et surtout de les modifier via le JavaScript. En HTML, un template se présente sous la forme d'une balise <template> qui prend un attribut "nom". Ce nom sera utilisé pour intégrer le template dans le HTML avec la notation suivante {{> monTemplate}}. C'est aussi avec ce nom que l'on référencera le template dans le JavaScript. Comme on peut le voir dans cet <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body.html"> exemple </a>, le template affiche le texte "Bonjour, je suis un template" simplement en le référant dans le HTML avec "{{> bonjour}} </p>
 <p> Assez simple, non? </p>
-
+<h3> Templating avec JavaScript </h3>
+<p> Comme mentionné ci-desssu, l'avantage des templates est la possibilité de modifier leur contenur via un script JavaScript. Toujours dans la même idée que le précédent, cet <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body2.html"> exemple </a> montre que le template "bonjour" n'est même plus définit en HTML, à la place du contenu de la balise p, on trouve {{texte}}. De même pour cette formulation étrange: </p>
+&lt;ul&gt;
+  {{#each elem}}
+    {{>liste}}
+  {{/each}}
+&lt;/ul&gt;
