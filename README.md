@@ -50,3 +50,13 @@
   <li><a href="http://fr.discovermeteor.com/chapters/templates/">Découvrir Meteor</a></li>
   <li><a href="https://www.youtube.com/watch?v=nF5CRSEC8PA">Vidéo</a> de LevelUpTuts qui propose un walk-through de l'application de base Meteor (celle qui est présente par défaut lors de la création de la création d'un nouveau projet Meteor) et quelques étapes de plus comme la création et l'affichage d'une liste définie en JavaScript (comme dans l'<a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body2.html"> exemple 2 </a>)</li>
 </ul>
+<h3> Résumé </h3>
+<p>Un template:<p>
+<ul>
+  <li> Permet de créer une "partie" de la page </li>
+  <li> Est créé avec une balise &lt;template&gt; qui prend un attribut "name" </li>
+  <li> Est référencé avec {{> monTemplate}} en HTML et avec Template.monTemplate en JavaScript </li>
+  <li> Peut avoir des opérateurs logiques en HTML comme {{#each}} et {{#if}} </li>
+  <li> Peut être référencé avvec Template.body en JS, <a href="https://www.meteor.com/tutorials/blaze/templates/#addinglogicanddatatotemplates" body étant considéré comme un parent des autres templates </a> </li>
+</ul>
+  
