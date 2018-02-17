@@ -57,7 +57,7 @@
   <li> Est créé avec une balise &lt;template&gt; qui prend un attribut "name" </li>
   <li> Est référencé avec {{> monTemplate}} en HTML et avec Template.monTemplate en JavaScript </li>
   <li> Peut avoir des opérateurs logiques en HTML comme {{#each}} et {{#if}} </li>
-  <li> Peut être référencé avvec Template.body en JS, <a href="https://www.meteor.com/tutorials/blaze/templates/#addinglogicanddatatotemplates"> body étant considéré comme un parent des autres templates </a> </li>
+  <li> Peut être référencé avvec Template.body en JS, <a href="https://www.meteor.com/tutorials/blaze/templates#addinglogicanddatatotemplates"> body étant considéré comme un parent des autres templates </a> </li>
 </ul>
   
 <h2> Bases de données: mongoDB </h2>
