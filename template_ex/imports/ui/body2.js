@@ -14,6 +14,7 @@ Template.bonjour.helpers({
 	},
 })
 
+//le template "body" est en fait la balise <body>, elle est utilisée ici comme un parent des autres templates (ici, elem)
 Template.body.helpers({
 	//bien référencer les bons éléments
 	elem: [
