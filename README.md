@@ -62,3 +62,12 @@
 </ul>
   
 <h2> Bases de données: mongoDB </h2>
+<h3> MongoBD </h3>
+<p> MongoDB est le système de gestion de base de données par défaut de Meteor. Si vous avez déjà des connaissances en SQL, cela ne devrait pas vous sembler trop compliqué: en effet, le fonctionnement de base est le même. On crée des collections (ou tables en SQL) qui contiennent des attributs. On peut lier les collections entre elles grâce à la mise en place d'id uniques à chaque instance d'une collection (dans SQL, se rappeller des schémas antités-associations, et donc les primary et foreign keys). <p>
+<p> La mise en place d'une collection se fait à l'aide d'un fichier JavaScript que l'on crée dans le dossier imports/api. <p>
+  
+<h3> Pour plus d'informations: </h3>
+<ul>
+  <li> <a href="https://www.meteor.com/tutorials/blaze/collections"> Tutoriel Meteor </a> </li>
+  <li> <a href="https://guide.meteor.com/collections.html"> Documentation API </a> </li>
+</ul>
