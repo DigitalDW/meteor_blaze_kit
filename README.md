@@ -60,3 +60,4 @@
   <li> Peut être référencé avvec Template.body en JS, <a href="https://www.meteor.com/tutorials/blaze/templates/#addinglogicanddatatotemplates"> body étant considéré comme un parent des autres templates </a> </li>
 </ul>
   
+<h2> Bases de données: mongoDB </h2>
