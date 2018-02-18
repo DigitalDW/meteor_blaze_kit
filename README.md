@@ -70,7 +70,11 @@ La structure par défaut est la suivante: </p>
       </li>
       <li>imports
         <ul>
-          <li>api</li>
+          <li>api
+            <ul>
+              <li><i>fichers de bases de données</i><(li>
+            </ul>
+          </li>
           <li>ui
             <ul>
               <li>body.html</li>
@@ -89,6 +93,14 @@ La structure par défaut est la suivante: </p>
     <li><i>d'autres fichiers</i></li>
   </ul>
 </ul>
+<p>L'avantage de cette méthode est une navigation plus claire des fichiers: en effet, on peut aisément comprendre que les fichiers "imports" sont des fichiers en plus de la page HTML de base. Cela permet aussi de mieux différencier les fichers à noms récurents par exemple. </p>
+<p> Pour plus d'infos pour la structure de dossiers, voir la < href="https://guide.meteor.com/structure.html"> <b>documentation officielle</b> </a>. </p>
+<br/>
+<p> Cette deuxième partie parle des liens entre les fichiers. En effet, répartir les fichers au travers de plusieurs dossiers requiert un minimum de rigueur pour la liaison entre les fichiers. Pour faire simple: ../client/main.html est la page principale et sera celle qui sera chargée au lancement de l'application. ../client/main.js est automatiquement lié à main.html et permet, à l'aide d'une ligne du genre: "import '../imports/ui/body.js';", d'importer des fichiers qui se trouvent dans le dossier ../imports/ui. Après il s'agit d'importer avec des lignes de code similaires les fichiers dans les fichiers JS qui seront dans le dossier ../imports/ui. Par exemple, avec la structure de dossier mentionnée ci-dessus, lier tous les fichiers ressemble à ça:</p>
+<p>Dans ../client/main.js: "import '../imports/ui/body.js';"</p>
+<p>Et dans ../imports/ui/body.js: "import './body.html';" pour lier le fichier body.html à body.js</p>
+<p>Ce code aura comme résultat d'importer, par itération, le contenu de body.html dans main.html via body.js et main.js. </p>
+<p>Une fois la logique assimilée, des exemples comme celui-ci <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body4.js"> ou d'autres disponibles dans ce kit </a> vous paraîterons faciles</p>
 <h2> Les templates </h2>
 <h3> Qu'est-ce qu'un template? </h3>
 <p><i><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body1.js">body1.js</a></i><p>
