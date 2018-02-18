@@ -42,7 +42,7 @@
 <p> Un template est une façon de créer des éléments en HTML, des les ajouter dans le corps de l'application et surtout de les modifier via le JavaScript. En d'autres termes: un template pemert de créer des blocs de code réactifs! </p>
 <p> Pour créer un template, rien de plus simple: il suffit d'une balise template écrite comme suit: <b> &lt;template name="monTemplate"&gt;</b> <i>mon code HTML</i> <b> &lt;/template&gt; </b>. Notez qu'il n'y a qu'un attribut "name", celui-ce permet de référencer le template. Par exemple, pour l'ajouter à ma page HTML, je vais écrire {{> monTemplate}} à l'endroit que je souhaite. Ceci aura pour effet d'afficher le contenu du template sur la page. </p>
 <p><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/bonjour1.html">Cet exemple</a> montre un template nommé "bonjour1" qui affiche "Bonjour, je suis un template". </p>
-<p> Si on jette un oeil au <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body.html">body.html</a> on peut voir que, déjà, c'est très compliqué (mais ne paniquez pas!), mais surtout que le texte "Bonjour, je ne suis pas un template" est du pur HTML, là où le texte "Bonjour, je suis un template" n'est référencé qu'avec {{> bonjour1}} (dans une condition, certes, mais nous développerons ces notions plus tard). Le second texte n'apparaît donc que parce qu'il est intégré au HTML! </p>
+<p> Si on jette un oeil au <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body.html">body.html</a> on peut voir que, déjà, c'est très compliqué (mais ne paniquez pas!), mais surtout que le texte "Bonjour, je ne suis pas un template" est du pur HTML, là où le texte "Bonjour, je suis un template" n'est référencé qu'avec {{> bonjour1}} (dans une <a href="#-la-logique-"> condition </a>, certes, mais nous développerons ces notions plus tard). Le second texte n'apparaît donc que parce qu'il est intégré au HTML! </p>
 <p> Assez simple, non? </p>
 <h3> Templating avec JavaScript </h3>
 <p><i><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body2.js">body2.js</a></i></p>
@@ -54,23 +54,24 @@
 &nbsp;&nbsp;{{/each}} <br/>
 &lt;/ul&gt; <br/><br/>
 <h4> La logique </h4>
-<p> Ces 5 lignes de codes introduisent la notion de logique dans le templating: {{#each}}, qui sert de boucle, et, par exemple, {{#if}}, pas visible dans l'exemple mais néanmoins existant et utilisé, permettent d'ajouter de la logique et des conditions. Ici, comme le précise le commentaire, la logique est la suivante: pour chanque (each) élément de ma liste, ajouter un template {{>liste}}, qui contient une balise li. Ainsi, le programme va chercher tous les éléments correspondants dans le <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body2.js"> JavaScript </a> et va ajouter une balise li par élément. On peut ajouter un élément à la liste dans le JavaScript et la page se mettera à jour pour accueillir le nouvel élément. Une autre chose à noter est la notion de "helpers". Un helper va permettre de définir et modifier du contenu HTML dans le template via le JavaScript. Ainsi, on définit un helper pour le template "bonjour" à la ligne 7 et on y ajoute un texte en faisant correspondre le nom de la variable ("texte") avec la variable utilisiée pour l'ajouter dans le HTML ( {{texte}} ). </p>
+<p> Ces 5 lignes de codes introduisent la notion de logique dans le templating: {{#each}} sert de boucle. En effet, la formulation en langage courant de ce bout de code serait:"Pour chaque élément de "elem", ajouter un template {{> liste}}" (funfact: cette formulation est très proche de la formulation des boucles en Python!). Donc le programme va afficher trois {{> liste}} puisque seulement trois éléments sont définit dans le <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body2.js"> JavaScript (lignes 31-40) </a>. On peut ajouter un élément à la liste dans le JavaScript et la page se mettera à jour pour accueillir le nouvel élément. Mais cela requiert toujours de passer pare le code! Nous verrons comment ajouter un élément sans passer par le code plus tard. Il m'est encore nécessaire d'introduire le {{#if}} que l'on a déjà pu appercevoir dans le <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body.html">body.html</a>: les if fonctionnent comme des conditions normales en JavaScript. En effet, la notation {{#if condition0}} signifie: "si la condition0 est vrai, alors..." Et cela est vrai pour toutes les conditions dans le fichier. J'utilise ces conditions pour masquer certains templates que je n'utilise pas à ce moment là. Les conditions peuvent être plus compliquées que je juste que les "if true" que j'utilise, mais vous le décrouvrirez par vous-mêmes plus tard! </p>
 <p> Pour plus d'informations: <p>
 <ul>
   <li><a href="https://www.meteor.com/tutorials/blaze/templates">Tutoriel Meteor</a></li>
   <li><a href="https://docs.meteor.com/v1.3.5/api/templates.html">Documentation API</a></li>
+  <li><a href="http://blazejs.org/api/spacebars.html">Documentation Blaze</a></li>
   <li><a href="https://mquandalle.gitbooks.io/apprendre-meteor/content/013-templates.html">Apprendre Meteor</a></li>
   <li><a href="http://fr.discovermeteor.com/chapters/templates/">Découvrir Meteor</a></li>
-  <li><a href="https://www.youtube.com/watch?v=nF5CRSEC8PA">Vidéo</a> de LevelUpTuts qui propose un walk-through de l'application de base Meteor (celle qui est présente par défaut lors de la création de la création d'un nouveau projet Meteor) et quelques étapes de plus comme la création et l'affichage d'une liste définie en JavaScript (comme dans l'<a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body2.html"> exemple 2 </a>)</li>
+  <li><a href="https://www.youtube.com/watch?v=nF5CRSEC8PA">Vidéo</a> de LevelUpTuts qui propose un walk-through de l'application de base Meteor (celle qui est présente par défaut lors de la création de la création d'un nouveau projet Meteor) et quelques étapes de plus comme la création et l'affichage d'une liste définie en JavaScript (comme dans <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body2.js"> cet exemple </a>)</li>
 </ul>
 <h3> Résumé </h3>
 <p>Un template:<p>
 <ul>
-  <li> Permet de créer une "partie" de la page </li>
+  <li> Permet de créer une "partie" de la page, un bloc de code en somme </li>
   <li> Est créé avec une balise &lt;template&gt; qui prend un attribut "name" </li>
   <li> Est référencé avec {{> monTemplate}} en HTML et avec Template.monTemplate en JavaScript </li>
-  <li> Peut avoir des opérateurs logiques en HTML comme {{#each}} et {{#if}} </li>
-  <li> Peut être référencé avvec Template.body en JS, <a href="https://www.meteor.com/tutorials/blaze/templates#addinglogicanddatatotemplates"> body étant considéré comme un parent des autres templates </a> </li>
+  <li> Peut être entouré ou contenir des opérateurs logiques en HTML comme {{#each}} et {{#if}} </li>
+  <li> Peut être référencé avec Template.body en JS, <a href="https://www.meteor.com/tutorials/blaze/templates#addinglogicanddatatotemplates"> body étant considéré comme un parent des autres templates </a> </li>
 </ul>
   
 <h2> Bases de données: mongoDB </h2>
