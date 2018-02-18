@@ -26,7 +26,7 @@
 <ul>
 <h3> Liste des sujets </h3>
 <ul>
-  <li> <a href="#-la-structure-des-dossiers-"> la structure des dossiers </a></li>
+  <li> <a href="#-la-structure-des-dossiers-">La structure des dossiers </a></li>
   <li> <a href="#-les-templates-">Les templates</a></li>
   <li> <a href="#-bases-de-donn%C3%A9es-mongodb-">Bases de données (mongoDB)</a></li>
   </ul>
@@ -141,15 +141,32 @@ La structure par défaut est la suivante: </p>
   
 <h2> Bases de données: mongoDB </h2>
 <h3> MongoBD </h3>
-<p> MongoDB est le système de gestion de base de données par défaut de Meteor. Si vous avez déjà des connaissances en SQL, cela ne devrait pas vous sembler trop compliqué: en effet, le fonctionnement de base est le même. On crée des collections (ou tables en SQL) qui contiennent des attributs. On peut lier les collections entre elles grâce à la mise en place d'id uniques à chaque instance d'une collection (dans SQL, se rappeller des schémas antités-associations, et donc les primary et foreign keys). <p>
+<p> MongoDB est le système de gestion de base de données par défaut de Meteor. Si vous avez déjà des connaissances en SQL, cela ne devrait pas vous sembler trop compliqué: en effet, le fonctionnement de base est le même. On crée des collections (ou tables en SQL) qui contiennent des attributs. On peut lier les collections entre elles grâce à la mise en place d'id uniques à chaque instance d'une collection (dans SQL, se rappeller des schémas antités-associations, et donc les primary et foreign keys) et en référant cet id dans d'autres instances d'autres collections.<p>
+<p>Par exemple:</p>
+<p>Maison</p>
+<ul>
+  <li>id: 154840</li>
+  <li>couleur: rose</li>
+  <li>pièces: 7.5</li>
+  <li>etc</li>
+</ul>
+<p>Résident</p>
+<ul>
+  <li>id: 654987981</li>
+  <li>id_maison: 154840</li>
+  <li>revenu: 4500</li>
+  <li>age: 38</li>
+  <li>etc</li>
+</ul>
+<p>Les deux collections sont liées grâce à l'id de la maison qui est retrouvé dans les informations du résident. Pas trop compliqué, si? Bref, passons à Meteor:</p>
 <p> La mise en place d'une collection se fait à l'aide d'un fichier JavaScript que l'on crée dans le dossier imports/api: il devrait contenir le code suivant:<p>
 <p>
   import { Mongo } from 'meteor/mongo';
   <br/><br/>
   export const Macollec = new Mongo.Collection('maCollec');
 </p>
-<p> "Macollec" devrait toujours prendre une majuscule et sera utilisé pour référencer la collection dans le JavaScript lors de méthodes telles que Macollec.insert({...}) ou Macollec.find({...}). "maCollec" sera utilisé surtout dans l'invite de commande et pour certaines reéférences moins importantes. </p>
-<p> <a href="https://www.meteor.com/tutorials/blaze/collections">Une fois les liens entre fichiers fait correctement</a>, la base de données est liée à la page ou au template et le contenu de la page sera mis à jour automatiquement lorsque du contenu sera ajouté, modifié ou supprimé de la base de collection.</p>
+<p> "Macollec" devrait toujours prendre une majuscule et sera utilisé pour référencer la collection dans le JavaScript lors de méthodes telles que Macollec.insert({...}) ou Macollec.find({...}). "maCollec" sera utilisé surtout dans l'invite de commande et pour certaines reéférences moins importantes. <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/api/liste_elem.js">Ce fichier</a> en est un exemple.</p>
+<p> <a href="#-la-structure-des-dossiers-">Une fois les liens entre fichiers fait correctement</a>, la base de données est liée à la page ou au template et le contenu de la page sera mis à jour automatiquement lorsque du contenu sera ajouté, modifié ou supprimé de la base de collection.</p>
 <h3> Pour plus d'informations: </h3>
 <ul>
   <li> <a href="https://www.meteor.com/tutorials/blaze/collections"> Tutoriel Meteor </a> </li>
