@@ -1,15 +1,22 @@
 <body>
-  <h1>Les templates</h1>
-  <!-- Ce texte est une simple balise <p> -->
-  <p> Bonjour, je ne suis pas un template </p>
+  {{> titre}}
+  {{#if condition0}}
+    <!-- Ce texte est une simple balise <p> -->
+    <p> Bonjour, je ne suis pas un template </p>
+    
+    <!-- Ajout du template "bonjour" -->
+	{{#if ex1}}
+      {{> bonjour1}}
+	{{else}}
+	  {{> bonjour}}
+	{{/if}}
+  {{/if}}
   
-  <!-- Ici, au lieu d'écrire une balise <p>, on place un template
-  Pour intégrer un template, la syntaxe est la suivante: {{> monTemplate}} -->
-  {{> bonjour}}
+  {{#if condition1}}
+    {{> zoneListe}}
+  {{/if}}
+  
+  {{#if condition2}}
+    {{>ajout}}
+  {{/if}}
 </body>
-
-<!-- Pour créer un template, il suffit de créer une balise <template> qui prend un attribut "name" -->
-<template name="bonjour">
-  <!-- Un template contient généralement du HTML -->
-  <p> Bonjour, je suis un template </p>
-</template>

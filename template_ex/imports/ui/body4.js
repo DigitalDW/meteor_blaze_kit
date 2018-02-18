@@ -3,9 +3,9 @@ import { Elem } from '../api/liste_elem.js';
 
 import './body.html';
 import './titre.html';
-import './bonjour.html';
 import './zoneListe.html';
 import './liste.html';
+import './ajout.html';
 
 Template.titre.helpers({
 	text: function(){
@@ -14,17 +14,23 @@ Template.titre.helpers({
 	},
 });
 
-Template.bonjour.helpers({
-	texte: function(){
-		monTexte = "Bonjour, je suis un template remplit en JavaScript!"
-		return monTexte
-	},
-});
-
 Template.zoneListe.helpers({
 	elem() {
     return Elem.find({});
   },
+});
+
+Template.ajout.events({
+	'submit .new-elem': function(event){
+		event.preventDefault();
+		const target = event.target;
+		const text = target.texteElem.value;
+		Elem.insert({
+			elementListe: text,
+			createdAt: new Date(),
+		});
+		target.texteElem.value = "";
+	}
 });
 
 Template.body.helpers({
@@ -37,7 +43,7 @@ Template.body.helpers({
 	condition1: function(){
 		return true
 	},
-	condition_true: function(){
-		return false
+	condition2: function(){
+		return true
 	}
 });

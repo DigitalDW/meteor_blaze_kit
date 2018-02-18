@@ -1,0 +1,19 @@
+<template name="zoneListe">
+ <h3> Une liste </h3>
+  
+  <ul>
+	<li> element 1 </li>
+	<li> element 2 </li>
+	<li> element 3 </li>
+  </ul>
+  
+  <!-- Utilisation plus avancée d'un template: afficher une liste -->
+  <h3> Une liste (avec un template!) </h3>
+  
+  <!-- La formulation est très similaire aux boucles en Python: "pour chaque élément dans la liste, ajouter un template" -->
+  <ul>
+    {{#each elem}}
+	  {{>liste}}
+	{{/each}}
+  </ul>
+</template>
