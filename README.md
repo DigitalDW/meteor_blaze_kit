@@ -37,7 +37,58 @@
 <br/>
 <h2> La structure des dossiers </h2>
 <p> Petit chapitre qui reste néanmoins <b> très </b> important pour le début du projet: la structure des dossier et les liens entre fichiers. </p>
-<p></p>
+<p> Pour la permière partie, c'est assez simple: lors de la création d'un nouveau projet, une structure de dossier est crée directement. Mais cette structure, bien que fonctionnelle, n'est pas la plus optimale. Je tiens à préciser que la suite est subjective et peut être adaptée en fonction des groupes, sur ce, continuons: <br/>
+La structure par défaut est la suivante: </p>
+<ul>
+  <li>projet_meteor
+    <ul>
+      <li>.meteor</li>
+      <li>client
+        <ul>
+          <li>mais.css</li>
+          <li>mais.html</li>
+          <li>mais.js</li>
+        </ul>
+      </li>
+      <li>node_modules</li>
+      <li>server</li>
+      <li><i>d'autres fichiers</i></li>
+    </ul>
+  </li>
+</ul>
+<p>La structure en soit fonctionne, mais Meteor propose une autre structure pour gérer les fichiers qui, à mon sens, est plus logique dans le développement d'un plus grosse application:</p>
+<ul>
+  <li>projet_meteor
+    <ul>
+      <li>.meteor</li>
+      <li>client
+        <ul>
+          <li>mais.css</li>
+          <li>mais.html</li>
+          <li>mais.js</li>
+        </ul>
+      </li>
+      <li>imports
+        <ul>
+          <li>api</li>
+          <li>ui
+            <ul>
+              <li>body.html</li>
+              <li>body.js</li>
+              <li><i>autres fichiers tels que les fichers de chaque templates, etc</i></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>node_modules</li>
+      <li>server</li>
+      <li><i>d'autres fichiers</i></li>
+    </li>
+    <li>node_modules</li>
+    <li>server</li>
+    <li><i>d'autres fichiers</i></li>
+  </ul>
+</ul>
 <h2> Les templates </h2>
 <h3> Qu'est-ce qu'un template? </h3>
 <p><i><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body1.js">body1.js</a></i><p>
