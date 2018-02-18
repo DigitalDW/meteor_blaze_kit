@@ -22,7 +22,7 @@
 <ul>
   <li> Chaque concept est détaillé ci-dessous </li>
   <li> Des liens directs vers les bons fichiers seront mis à disposition avec chaque exemple </li>
-  <li> Pour tester le différents codes, il suffit de télécharger le projet et de changer le chiffre de body#.js à la ligne suivante (selon le code que l'on souhaite exécuter): import '../imports/ui/<b>body.js</b>'; dans main.js. (par défaut et pour le premier exemple, il faut entrer "body.js")</li>
+  <li> Pour tester le différents codes, il suffit de télécharger le projet et de changer le chiffre de body#.js à la ligne suivante (selon le code que l'on souhaite exécuter): import '../imports/ui/<b>body#.js</b>'; dans ../client/main.js. (par défaut, "body1.js")</li>
 <ul>
 <h3> Liste des sujets </h3>
 <ul>
@@ -30,6 +30,11 @@
   <li> <a href="#-bases-de-donn%C3%A9es-mongodb-">Bases de données (mongoDB)</a></li>
 </ul>
 <br/>
+<br/>
+<h2> Utilsation </h2>
+<p> "C'est bien joli tout ça mais je fais quoi?" Eh bien après avoir installé Meteor, il suffit de lancer le serveur (s'assurer d'être dans le dossier du projet et taper "meteor" dans l'invite de commande)! Très simple!</p>
+<p> "Mais l'exemple qui est décrit n'est pas le même, comment faire?" Pour s'assurer de voir le bon résultat, une indication sur le fichier "body#.js" sera donnée au début de chaque explication. Ainsi, il vous suffit d'ouvrir le fichier ../client/main.js et de remplacer la valeur "#" de '../imports/ui/<b>body#.js</b>' par la valeur correspondante et le tour est joué!</p>
+<p> "J'ai dautres questions qui ne sont pa détaillées ici!" CContactez moi par mail: loris.rimaz@unil.ch ou demandez moi en classe. </p>
 <br/>
 <h2> Les templates </h2>
 <h3> Qu'est-ce qu'un template? </h3>
