@@ -26,6 +26,7 @@
 <ul>
 <h3> Liste des sujets </h3>
 <ul>
+  <li> <a href="" la structure des dossiers </a></li>
   <li> <a href="#-les-templates-">Les templates</a></li>
   <li> <a href="#-bases-de-donn%C3%A9es-mongodb-">Bases de données (mongoDB)</a></li>
   </ul>
@@ -34,6 +35,7 @@
 <p> "Mais l'exemple qui est décrit n'est pas le même, comment faire?" Pour s'assurer de voir le bon résultat sur votre machine, une indication sur le fichier "body#.js" sera donnée au début de chaque explication. Ainsi, il vous suffit d'ouvrir le fichier ../client/main.js et de remplacer la valeur "#" de '../imports/ui/<b>body#.js</b>' par la valeur correspondante et le tour est joué!</p>
 <p> "J'ai dautres questions qui ne sont pas détaillées ici!" Contactez moi par mail: loris.rimaz@unil.ch ou demandez moi en classe. </p>
 <br/>
+<h2> La structure des dossiers </h2>
 <h2> Les templates </h2>
 <h3> Qu'est-ce qu'un template? </h3>
 <p><i><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body1.js">body1.js</a></i><p>
