@@ -97,7 +97,6 @@ La structure par défaut est la suivante: </p>
 <br/>
 <p>L'avantage de cette méthode est une navigation plus claire des fichiers: en effet, on peut aisément comprendre que les fichiers "imports" sont des fichiers en plus de la page HTML de base. Cela permet aussi de mieux différencier les fichers à noms récurents par exemple. </p>
 <p> Pour plus d'infos pour la structure de dossiers, voir la < href="https://guide.meteor.com/structure.html"> <b>documentation officielle</b> </a>. </p>
-<br/>
 <h3> Liens entre fichiers </h3>
 <p> Cette deuxième partie parle des liens entre les fichiers. En effet, répartir les fichers au travers de plusieurs dossiers requiert un minimum de rigueur pour la liaison entre les fichiers. Pour faire simple: ../client/main.html est la page principale et sera celle qui sera chargée au lancement de l'application. ../client/main.js est automatiquement lié à main.html et permet, à l'aide d'une ligne du genre: "import '../imports/ui/body.js';", d'importer des fichiers qui se trouvent dans le dossier ../imports/ui. Après il s'agit d'importer avec des lignes de code similaires les fichiers dans les fichiers JS qui seront dans le dossier ../imports/ui. Par exemple, avec la structure de dossier mentionnée ci-dessus, lier tous les fichiers ressemble à ça:</p>
 <p>Dans ../client/main.js: "import '../imports/ui/body.js';"</p>
