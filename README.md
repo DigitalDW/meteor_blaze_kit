@@ -26,7 +26,7 @@
 <ul>
 <h3> Liste des sujets </h3>
 <ul>
-  <li> <a href="" la structure des dossiers </a></li>
+  <li> <a href="#-la-structure-des-dossiers-"> la structure des dossiers </a></li>
   <li> <a href="#-les-templates-">Les templates</a></li>
   <li> <a href="#-bases-de-donn%C3%A9es-mongodb-">Bases de données (mongoDB)</a></li>
   </ul>
@@ -36,6 +36,8 @@
 <p> "J'ai dautres questions qui ne sont pas détaillées ici!" Contactez moi par mail: loris.rimaz@unil.ch ou demandez moi en classe. </p>
 <br/>
 <h2> La structure des dossiers </h2>
+<p> Petit chapitre qui reste néanmoins <b> très </b> important pour le début du projet: la structure des dossier et les liens entre fichiers. </p>
+<p></p>
 <h2> Les templates </h2>
 <h3> Qu'est-ce qu'un template? </h3>
 <p><i><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body1.js">body1.js</a></i><p>
