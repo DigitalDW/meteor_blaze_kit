@@ -56,6 +56,7 @@ La structure par défaut est la suivante: </p>
     </ul>
   </li>
 </ul>
+<br/>
 <p>La structure en soit fonctionne, mais Meteor propose une autre structure pour gérer les fichiers qui, à mon sens, est plus logique dans le développement d'un plus grosse application:</p>
 <ul>
   <li>projet_meteor
@@ -93,6 +94,7 @@ La structure par défaut est la suivante: </p>
     <li><i>d'autres fichiers</i></li>
   </ul>
 </ul>
+<br/>
 <p>L'avantage de cette méthode est une navigation plus claire des fichiers: en effet, on peut aisément comprendre que les fichiers "imports" sont des fichiers en plus de la page HTML de base. Cela permet aussi de mieux différencier les fichers à noms récurents par exemple. </p>
 <p> Pour plus d'infos pour la structure de dossiers, voir la < href="https://guide.meteor.com/structure.html"> <b>documentation officielle</b> </a>. </p>
 <br/>
@@ -151,6 +153,7 @@ La structure par défaut est la suivante: </p>
   <li>pièces: 7.5</li>
   <li>etc</li>
 </ul>
+<br/>
 <p>Résident</p>
 <ul>
   <li>id: 654987981</li>
@@ -159,6 +162,7 @@ La structure par défaut est la suivante: </p>
   <li>age: 38</li>
   <li>etc</li>
 </ul>
+<br/>
 <p>Les deux collections sont liées grâce à l'id de la maison qui est retrouvé dans les informations du résident. Pas trop compliqué, si? Bref, passons à Meteor:</p>
 <p> La mise en place d'une collection se fait à l'aide d'un fichier JavaScript que l'on crée dans le dossier imports/api: il devrait contenir le code suivant:<p>
 <p>
