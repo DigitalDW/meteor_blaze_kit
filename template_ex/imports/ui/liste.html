@@ -1,4 +1,11 @@
 <!-- Template pour la liste: contient un <li> -->
 <template name="liste">
-	<li class="liste-li" onmouseover="this.style.color='#8258FA'" onmouseout="this.style.color='black'">{{elementListe}}</li>
+	<li class="liste-li" onmouseover="this.style.color='#8258FA'" onmouseout="this.style.color='black'">
+		{{elementListe}}
+	</li>
+	{{#if selected}}
+		{{> demande}}
+		<br/>
+		<br/>
+	{{/if}}
 </template>

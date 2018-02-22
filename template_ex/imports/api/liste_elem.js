@@ -9,4 +9,10 @@ Meteor.methods({
 	'elem.remove'(elemID){
 		Elem.remove(elemID);
 	},
+	'elem.editSelect'(elemID, setSelected){
+		Elem.update(elemID, { $set: { selected: setSelected } } )
+	},
+	'elem.editName'(elemID, newName){
+		Elem.update(elemID, { $set: { elementListe: newName } } )
+	}
 })
