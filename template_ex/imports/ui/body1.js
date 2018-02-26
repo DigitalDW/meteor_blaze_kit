@@ -8,6 +8,9 @@ Template.body.helpers({
 	ex1: function(){
 		return true
 	},
+	condition: function(){
+		return false
+	},
 	condition0: function(){
 		return true
 	},

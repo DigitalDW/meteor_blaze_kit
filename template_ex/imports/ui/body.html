@@ -1,4 +1,7 @@
 <body>
+  {{#if condition}}
+    {{> loginButtons}}
+  {{/if}}
   {{> titre}}
   {{#if condition0}}
     <!-- Ce texte est une simple balise <p> -->
@@ -13,10 +16,16 @@
   {{/if}}
   
   {{#if condition1}}
-    {{> zoneListe}}
+	{{> zoneListe}}
   {{/if}}
   
-  {{#if condition2}}
-    {{>ajout}}
+  {{#if body7}}
+    {{#if currentUser}}
+      {{>ajout}}
+	{{/if}}
+  {{else}}
+	{{#if condition2}}
+      {{>ajout}}
+    {{/if}}
   {{/if}}
 </body>

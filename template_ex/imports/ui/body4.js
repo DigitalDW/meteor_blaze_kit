@@ -11,6 +11,9 @@ Template.body.helpers({
 	ex1: function(){
 		return false
 	},
+	condition: function(){
+		return false
+	},
 	condition0: function(){
 		return false
 	},
