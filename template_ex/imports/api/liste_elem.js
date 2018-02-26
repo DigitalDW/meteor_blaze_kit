@@ -11,7 +11,6 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-	//supprimer une tâche en fonction de son ID
 	'elem.add'(text){
 		check(text, String);
 		Elem.insert({
