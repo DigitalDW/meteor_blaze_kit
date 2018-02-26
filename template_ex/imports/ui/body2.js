@@ -1,10 +1,25 @@
 import { Template } from 'meteor/templating';
  
 import './body.html';
-import './titre.html';
-import './bonjour.html';
-import './zoneListe.html';
-import './liste.html';
+import './template/titre.html';
+import './template/bonjour.html';
+import './template/zoneListe.html';
+import './template/liste.html';
+
+Template.body.helpers({
+	ex1: function(){
+		return false
+	},
+	condition0: function(){
+		return true
+	},
+	condition1: function(){
+		return true
+	},
+	condition2: function(){
+		return false
+	}
+});
 
 Template.titre.helpers({
 	//on précise quel élément on crée / modifie
@@ -37,19 +52,4 @@ Template.zoneListe.helpers({
 		{ elementListe: 'element 2' },
 		{ elementListe: 'element 3' },
 	],
-});
-
-Template.body.helpers({
-	ex1: function(){
-		return false
-	},
-	condition0: function(){
-		return true
-	},
-	condition1: function(){
-		return true
-	},
-	condition2: function(){
-		return false
-	}
 });

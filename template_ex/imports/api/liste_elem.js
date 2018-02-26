@@ -14,5 +14,8 @@ Meteor.methods({
 	},
 	'elem.editName'(elemID, newName){
 		Elem.update(elemID, { $set: { elementListe: newName } } )
+	},
+	'elem.setSelected'(){
+		Elem.update({}, { $set: { selected: false }}, { multi: true } )
 	}
 })

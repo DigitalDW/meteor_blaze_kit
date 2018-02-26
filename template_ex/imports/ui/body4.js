@@ -2,10 +2,25 @@ import { Template } from 'meteor/templating';
 import { Elem } from '../api/liste_elem.js';
 
 import './body.html';
-import './titre.html';
-import './zoneListe.html';
-import './liste.html';
-import './ajout.html';
+import './template/titre.html';
+import './template/zoneListe.html';
+import './template/liste.html';
+import './template/ajout.html';
+
+Template.body.helpers({
+	ex1: function(){
+		return false
+	},
+	condition0: function(){
+		return false
+	},
+	condition1: function(){
+		return true
+	},
+	condition2: function(){
+		return true
+	}
+});
 
 Template.titre.helpers({
 	text: function(){
@@ -30,20 +45,5 @@ Template.ajout.events({
 			createdAt: new Date(),
 		});
 		target.texteElem.value = "";
-	}
-});
-
-Template.body.helpers({
-	ex1: function(){
-		return false
-	},
-	condition0: function(){
-		return false
-	},
-	condition1: function(){
-		return true
-	},
-	condition2: function(){
-		return true
 	}
 });

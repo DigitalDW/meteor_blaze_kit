@@ -1,15 +1,8 @@
 import { Template } from 'meteor/templating';
 
 import './body.html';
-import './titre.html';
-import './bonjour1.html';
-
-Template.titre.helpers({
-	text: function(){
-		monTexte = "Les Templates"
-		return monTexte
-	},
-});
+import './template/titre.html';
+import './template/bonjour1.html';
 
 Template.body.helpers({
 	ex1: function(){
@@ -24,4 +17,11 @@ Template.body.helpers({
 	condition2: function(){
 		return false
 	}
+});
+
+Template.titre.helpers({
+	text: function(){
+		monTexte = "Les Templates"
+		return monTexte
+	},
 });

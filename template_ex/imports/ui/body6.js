@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 import { Elem } from '../api/liste_elem.js';
-import { Session } from 'meteor/session'
+import { Session } from 'meteor/session';
+import { ReactiveVar } from 'meteor/reactive-var';
 
 import './body.html';
 import './template/titre.html';
@@ -11,7 +12,7 @@ import './template/demande.html';
 
 Template.body.onCreated(function(){
 	Meteor.call('elem.setSelected');
-})
+});
 
 Template.body.helpers({
 	ex1: function(){
@@ -41,22 +42,36 @@ Template.zoneListe.helpers({
   },
 });
 
+Template.liste.onCreated(function(){
+	this.selected = new ReactiveVar( false );
+})
+
+Template.liste.helpers({
+	selected: function(){
+		return Template.instance().selected.get();
+	}
+});
+
 Template.liste.events({
-	'click .liste-li': function(event){
+	'click .liste-li': function(event, template){
 		event.preventDefault();
-		Meteor.call("elem.editSelect", this._id, !this.selected);
+		Session.set("idElem", this.elementListe);
+		if( template.selected.get() == false){
+			template.selected.set(true);
+		}else{
+			template.selected.set(false);
+		}
 	}
 });
 
 Template.demande.events({
-	'click #edit': function(event){
+	'click #edit': function(event, template){
 		event.preventDefault();
-		let newname = prompt("Entrez un nouvean nom");
+		const txt = Session.get("idElem")
+		let newname = window.prompt("Entrez un nouvean nom",txt);
 		if(newname != null){
 			Meteor.call("elem.editName", this._id, newname);
-			Meteor.call("elem.editSelect", this._id, !this.selected);
 		}else{
-			Meteor.call("elem.editSelect", this._id, !this.selected);
 			return;
 		}
 	},
