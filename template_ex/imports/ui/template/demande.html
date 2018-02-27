@@ -2,4 +2,15 @@
 	<h4> Que voulez-vous faire? </h4>
 	<button id="edit">modifier</button>
 	<button id="delete">supprimer</button>
+	{{#if body8}}
+		{{#if aCree}}
+			<button id="toggle-private">
+				{{#if private}}
+					Privé
+				{{else}}
+					Public
+				{{/if}}
+			</button>
+		{{/if}}
+	{{/if}}
 </template>

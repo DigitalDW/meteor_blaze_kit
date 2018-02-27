@@ -75,11 +75,19 @@ Template.liste.events({
 	}
 });
 
+Template.demande.helpers({
+  	body8: function(){
+  		return true
+  	},
+  	aCree() {
+    	return this.createur === Meteor.userId();
+  },
+});
+
 Template.demande.events({
 	'click #edit': function(event, template){
 		event.preventDefault();
-		const txt = Session.get("idElem")
-		let newname = window.prompt("Entrez un nouvean nom",txt);
+		let newname = window.prompt("Entrez un nouvean nom",this.elementListe);
 		if(newname != null){
 			Meteor.call("elem.editName", this._id, newname);
 		}else{
@@ -89,6 +97,10 @@ Template.demande.events({
 	'click #delete': function(event){
 		event.preventDefault();
 		Meteor.call('elem.remove', this._id);
+	},
+	'click #toggle-private': function(event){
+		event.preventDefault();
+		Meteor.call('elem.setToPrivate', this._id, !this.private);
 	}
 });
 

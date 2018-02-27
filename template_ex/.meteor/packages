@@ -21,5 +21,6 @@ msavin:mongol
 session
 accounts-ui
 accounts-password
-autopublish
+practicalmeteor:mocha
 insecure
+autopublish
