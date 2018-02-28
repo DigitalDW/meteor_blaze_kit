@@ -15,10 +15,12 @@
 	{{/if}}
   {{/if}}
   
+  <!-- Ajout du template contenant la zone d'affichage des listes -->
   {{#if condition1}}
 	  {{> zoneListe}}
   {{/if}}
   
+  <!-- Ajout de la fonctionnalité permettant d'ajouter un élément à la BD -->
   {{#if body7}}
     {{#if currentUser}}
       {{>ajout}}
