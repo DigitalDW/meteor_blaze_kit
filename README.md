@@ -176,3 +176,23 @@ La structure par défaut est la suivante: </p>
   <li> <a href="https://www.meteor.com/tutorials/blaze/collections"> Tutoriel Meteor </a> </li>
   <li> <a href="https://guide.meteor.com/collections.html"> Documentation API </a> </li>
 </ul>
+<br/>
+<h3> Les méthodes </h3>
+<p> J'introduis cette notion assez tôt pour plusieurs raisons: déjà car avoir de bonnes habitudes en termes de sécurité est toujours un plus, mais surtout car utiliser des méthodes est, à mon sens, plus simple et plus utile. Un des gros avantages de cette façon de travailler est de ne pas avoir besoin de retapper des lignes et des lignes de code pour intéragire avec la base de données. En effet, il suffit d'appeller la méthode en lui passant les bons arguments et c'est fait! </p>
+<p> <b> Mais c'est quoi une méthode? </b> Excellente question! Une méthode est une fonction. Voilà, rien de plus. Mais pourquoi l'appellation n'est pas juste "fonction"? Eh bien un méthode est toujours liée à un objet, ici une collection. et une collection (ou une table en SQL) n'est rien d'autre qu'un objet et une fonction liée à un objet est une méthode. Cela peut sembler flou pour le moment, mais ne vous en faites pas! </p>
+<h4> Déclarer une méthode et l'appeller </h4>
+<p> Déclarer un méthode est très simple: dans le fichier de la collection (<a href="">..imports/api/liste_elem.js</a>) il suffit de taper:</p>
+<pre>
+Meteor.<span color="lightblue">methods</span>({
+    <span color="lightgreen">'maMethode'</span>(<i><span color="orange">argument1</span></i>, <i><span color="orange">argument2</span></i>, ...){
+        <span color="lightblue">check</span>(argument1, <i color="lightblue">type</i>);
+        <span color="lightblue">check</span>(argument2, <i color="lightblue">type</i>);
+        .
+        .
+        .
+        Macollec.insert/remove/update/...({
+            //code goes here
+        });
+    }
+})
+</pre>
