@@ -115,11 +115,13 @@ La structure par défaut est la suivante: </p>
 <p><i><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body2.js">body2.js</a></i></p>
 <p> Comme mentionné ci-dessus, l'avantage des templates est la possibilité de modifier leur contenu via un script JavaScript. Toujours dans la même idée que le précédent, <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/bonjour.html"> cet exemple </a> montre que le template "bonjour" n'est plus définit uniquement en HTML: à la place du contenu de la balise p on trouve {{texte}}. Si on regarde le <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body2.js">body2.js</a>, on remarque, à partir de la ligne 19, une nouvelle formulation: <b>Template.bonjour.helpers({ </b><i> code </i><b> }); </b>. Le mot clé ici est "helpers": un helper est une fonction qui permet de créer/remplir du contenu dans un tamplate. Ainsi, le helper ici présent prend "texte" comme argument et, grâce à une fonction qui retourne la variable "monTexte", prend la valeur de "Bonjour, je suis un template remplit en JavaScript!". Si on venait à modifier le contenur de monTexte, la valeur de "texte" serait modifiée à son tour et la page changera son contenu aussitôt. Plutôt cool!</p>
 <p>De même pour cette formulation étrange dans le fichier <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/zoneListe.html"> zoneListe.html, à la ligne 14 </a>: </p>
+<pre>
 &lt;ul&gt; <br/>
 &nbsp;&nbsp;{{#each elem}} <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;{{>liste}} <br/>
 &nbsp;&nbsp;{{/each}} <br/>
 &lt;/ul&gt; <br/><br/>
+</pre>
 <h4> La logique </h4>
 <p> Ces 5 lignes de codes introduisent la notion de logique dans le templating: {{#each}} sert de boucle. En effet, la formulation en langage courant de ce bout de code serait:"Pour chaque élément de "elem", ajouter un template {{> liste}}" (funfact: cette formulation est très proche de la formulation des boucles en Python!). Donc le programme va afficher trois {{> liste}} puisque seulement trois éléments sont définit dans le <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body2.js"> JavaScript (lignes 31-40) </a>. On peut ajouter un élément à la liste dans le JavaScript et la page se mettera à jour pour accueillir le nouvel élément. Mais cela requiert toujours de passer pare le code! Nous verrons comment ajouter un élément sans passer par le code plus tard. Il m'est encore nécessaire d'introduire le {{#if}} que l'on a déjà pu appercevoir dans le <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body.html">body.html</a>: les if fonctionnent comme des conditions normales en JavaScript. En effet, la notation {{#if condition0}} signifie: "si la condition0 est vrai, alors..." Et cela est vrai pour toutes les conditions dans le fichier. J'utilise ces conditions pour masquer certains templates que je n'utilise pas à ce moment là. Les conditions peuvent être plus compliquées que je juste que les "if true" que j'utilise, mais vous le décrouvrirez par vous-mêmes plus tard! </p>
 <p> Pour plus d'informations: <p>
@@ -145,6 +147,7 @@ La structure par défaut est la suivante: </p>
 <h3> MongoBD </h3>
 <p> MongoDB est le système de gestion de base de données par défaut de Meteor. Si vous avez déjà des connaissances en SQL, cela ne devrait pas vous sembler trop compliqué: en effet, le fonctionnement de base est le même. On crée des collections (ou tables en SQL) qui contiennent des attributs. On peut lier les collections entre elles grâce à la mise en place d'id uniques à chaque instance d'une collection (dans SQL, se rappeller des schémas antités-associations, et donc les primary et foreign keys) et en référant cet id dans d'autres instances d'autres collections.<p>
 <p>Par exemple:</p>
+<pre>
 <p>Maison</p>
 <ul>
   <li>id: 154840</li>
@@ -152,7 +155,9 @@ La structure par défaut est la suivante: </p>
   <li>pièces: 7.5</li>
   <li>etc</li>
 </ul>
+</pre>
 <br/>
+<pre>
 <p>Résident</p>
 <ul>
   <li>id: 654987981</li>
@@ -161,14 +166,17 @@ La structure par défaut est la suivante: </p>
   <li>age: 38</li>
   <li>etc</li>
 </ul>
+</pre>
 <br/>
 <p>Les deux collections sont liées grâce à l'id de la maison qui est retrouvé dans les informations du résident. Pas trop compliqué, si? Bref, passons à Meteor:</p>
 <p> La mise en place d'une collection se fait à l'aide d'un fichier JavaScript que l'on crée dans le dossier imports/api: il devrait contenir le code suivant:<p>
+<pre>
 <p>
   import { Mongo } from 'meteor/mongo';
   <br/><br/>
   export const Macollec = new Mongo.Collection('maCollec');
 </p>
+</pre>
 <p> "Macollec" devrait toujours prendre une majuscule et sera utilisé pour référencer la collection dans le JavaScript lors de méthodes telles que Macollec.insert({...}) ou Macollec.find({...}). "maCollec" sera utilisé surtout dans l'invite de commande et pour certaines reéférences moins importantes. <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/api/liste_elem.js">Ce fichier</a> en est un exemple.</p>
 <p> <a href="#-liens-entre-fichiers-">Une fois les liens entre fichiers fait correctement</a>, la base de données est liée à la page ou au template et le contenu de la page sera mis à jour automatiquement lorsque du contenu sera ajouté, modifié ou supprimé de la base de collection.</p>
 <h3> Pour plus d'informations: </h3>
