@@ -189,7 +189,7 @@ La structure par défaut est la suivante: </p>
 <p> J'introduis cette notion assez tôt pour plusieurs raisons: déjà car avoir de bonnes habitudes en termes de sécurité est toujours un plus, mais surtout car utiliser des méthodes est, à mon sens, plus simple et plus utile. Un des gros avantages de cette façon de travailler est de ne pas avoir besoin de retapper des lignes et des lignes de code pour intéragire avec la base de données. En effet, il suffit d'appeller la méthode en lui passant les bons arguments et c'est fait! </p>
 <p> <b> Mais c'est quoi une méthode? </b> Excellente question! Une méthode est une fonction. Voilà, rien de plus. Mais pourquoi l'appellation n'est pas juste "fonction"? Eh bien un méthode est toujours liée à un objet, ici une collection. et une collection (ou une table en SQL) n'est rien d'autre qu'un objet et une fonction liée à un objet est une méthode. Cela peut sembler flou pour le moment, mais ne vous en faites pas! </p>
 <h4> Déclarer une méthode et l'appeller </h4>
-<p> Déclarer un méthode est très simple: dans le fichier de la collection (<a href="">..imports/api/liste_elem.js</a>) il suffit de taper:</p>
+<p> Déclarer un méthode est très simple: dans le fichier de la collection (<a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/api/liste_elem.js">..imports/api/liste_elem.js</a>) il suffit de taper:</p>
 <pre>
 Meteor.<span color="lightblue">methods</span>({
     <span color="lightgreen">'maMethode'</span>(<i><span color="orange">argument1</span></i>, <i><span color="orange">argument2</span></i>, ...){
@@ -201,6 +201,18 @@ Meteor.<span color="lightblue">methods</span>({
         Macollec.insert/remove/update/...({
             //code goes here
         });
+    },
+    <span color="lightgreen">'maMethode2'</span>(<i><span color="orange">argument1</span></i>, <i><span color="orange">argument2</span></i>, ...){
+        <span color="lightblue">check</span>(argument1, <i color="lightblue">type</i>);
+        <span color="lightblue">check</span>(argument2, <i color="lightblue">type</i>);
+        .
+        .
+        .
+        Macollec.insert/remove/update/...({
+            //code goes here
+        });
     }
 })
 </pre>
+<p><b>Meteor.methods</b> signale que l'on crée une liste de méthodes. Les <b>check()</b> sont des fonctions qui vont vérifier que les arguments correspondent à un certain type (<i>String, Int, Float, Boolean, etc</i>). Le but de cette vérification est de s'assurer que l'utilisateur ne puisse pas entrer n'importe quoi et renforce donc la sécurité de l'application. La suite est très simple: <b>Macollec.insert()</b> permet d'ajouter un élément à la base de donées, <b>Macollec.remove()</b> permet de supprimer un éléement de la BD, <b>Macollec.update()</b> permet de modifier un élément de la BD, etc. Ces trois fonctions sont les plus répendues, donc pour les autres fonctions existantes, <a href="https://docs.mongodb.com/manual/reference/method/js-collection/">consultez la documentation</a></p>
+<p><b>Ok c'est cool, on a nos méthodes; et maintenant?</b> Commençons par parler de leur utilisation. (<i><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body5.js">body5.js</a></i>).</p>
