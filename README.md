@@ -124,6 +124,18 @@ La structure par défaut est la suivante: </p>
 </pre>
 <h4> La logique </h4>
 <p> Ces 5 lignes de codes introduisent la notion de logique dans le templating: {{#each}} sert de boucle. En effet, la formulation en langage courant de ce bout de code serait:"Pour chaque élément de "elem", ajouter un template {{> liste}}" (funfact: cette formulation est très proche de la formulation des boucles en Python!). Donc le programme va afficher trois {{> liste}} puisque seulement trois éléments sont définit dans le <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body2.js"> JavaScript (lignes 31-40) </a>. On peut ajouter un élément à la liste dans le JavaScript et la page se mettera à jour pour accueillir le nouvel élément. Mais cela requiert toujours de passer pare le code! Nous verrons comment ajouter un élément sans passer par le code plus tard. Il m'est encore nécessaire d'introduire le {{#if}} que l'on a déjà pu appercevoir dans le <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body.html">body.html</a>: les if fonctionnent comme des conditions normales en JavaScript. En effet, la notation {{#if condition0}} signifie: "si la condition0 est vrai, alors..." Et cela est vrai pour toutes les conditions dans le fichier. J'utilise ces conditions pour masquer certains templates que je n'utilise pas à ce moment là. Les conditions peuvent être plus compliquées que je juste que les "if true" que j'utilise, mais vous le décrouvrirez par vous-mêmes plus tard! </p>
+<h4> Dans le JavaScript </h4>
+<p> <b>C'est bien joli, on ajoute des templates et on crée des conditions pour afficher certains templates sous certaines conditions... Mais ensuite? A quoi ça nous avance?</b> Eh bien pour répondre à cette question, il faut parler de deux notions fondammentales pour le templating: les helpers (déjà expliqués plus haut) et les events.</p>
+<p> Un event est un événement, ok, vous l'avez probablement compris par vous même, mais c'est plus que ça. Un event fonctionne grosso moddo comme un addEventListener. Je m'explique. Avec Meteor, pour déclarer un event, il faut utiliser la syntaxe suivante:</p>
+<pre>
+  Template.monTemplate.event({
+    'click/submit/change/... .maClass (ou #monId)': function(event){
+      //le code vient ici
+    },
+    //les autres events se déclarent ici
+  })
+</pre>
+<p>L'avantage de cette formulation est que l'on peut regrouper plusieurs events pour le même template dans un seul bout de code. Les fonctions des events prennent souvent comme argument "event" (function(event)). Pourquoi? Eh bien parce que ce "event" réfère à l'événement qui vient de se produire. De ce fait, on peut le référencer plus loin pour modifier son comportement ou pour récupérer des données. Mais celà sera plus clair plus tard, en attendant, il faut comprendre qu'un template peut être modifié par un helper et/ou par un event!</p>
 <p> Pour plus d'informations: <p>
 <ul>
   <li><a href="https://www.meteor.com/tutorials/blaze/templates">Tutoriel Meteor</a></li>
@@ -141,6 +153,7 @@ La structure par défaut est la suivante: </p>
   <li> Est référencé avec {{> monTemplate}} en HTML et avec Template.monTemplate en JavaScript </li>
   <li> Peut être entouré ou contenir des opérateurs logiques en HTML comme {{#each}} et {{#if}} </li>
   <li> Peut être référencé avec Template.body en JS, <a href="https://www.meteor.com/tutorials/blaze/templates#addinglogicanddatatotemplates"> body étant considéré comme un parent des autres templates </a> </li>
+  <li> Peut être modifié en JavaScript avec des Helpers ou des Events</li>
 </ul>
   
 <h2> Bases de données: mongoDB </h2>
@@ -204,14 +217,21 @@ La structure par défaut est la suivante: </p>
 	}
 });
 </pre>
-<p>Dans le template <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/template/ajout.html"> ajout.html</a>, on a un formulaire (<pre> "<"form">" </pre>) qui contient un input et un bouton. Le formulaire à la classe "new-elem". Il pourrait aussi avoir un id, mais ici, ce n'est pas forcément nécessaire de faire la différence.</p>
+<p>Dans le template <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/template/ajout.html"> ajout.html</a>, on a un formulaire qui contient un input et un bouton. Le formulaire à la classe "new-elem". Il pourrait aussi avoir un id, mais ici, ce n'est pas forcément nécessaire de faire la différence. Dans le JavaScript, on utilise l'événement "submit" qui reconnaît l'appui du bouton ou lorsque l'utilisateur appuie sur la touche "Entrée". Lorsque le submit a lieu, on applique une fonction qui prend comme argument "event". Pour rappel, e mot clé "event" réfère à l'événement (le submit ici) qui vient de se produire. Ainsi, on lui dit d'empêcher le comportement par défaut de la page avec "event.preventdefault()" et on passe à la récupération des donées: la ligne "const target = event.target" c'est pas obligatoire mais il faudra alors garder en tête qu'à la place de "target" à la ligne suivante, il faudra entrer "event.target". Ce que ce "event.target" signifie est assez simple: c'est la cible de l'événement. Ainsi, lorsqu'on récupère la valeur de l'input avec "target.texteElem.value" (un peu comme un document.getElementById) on fait savoir à Meteor que la cible est cet input. Si on a plusieurs inputs, alors il suffit de créer plusieurs constantes avec la même syntaxe que cette ligne: "const maConst = (event.)target.monId.value.". Bien! Maintenant, on appelle la méthode "Macollec.insert({//<i>code goes here</i>})" (ici "Elem.insert"). La syntaxe est assez spécifique mais pas trop compliquée; elle suit la logique suivante: </p>
+<ul>
+	<li>attribut1: valeur1,</li>
+	<li>attribut2: valeur2,</li>
+	<li>attribut3: valeur3,</li>
+	<li>...</li>
+</ul>
+<p>Lors de l'appel de cette méthode, Meteor va ajouter créer une instance de "Elem" dans la base de donées avec certains attributs. Facile non?</p>
 <h3> Pour plus d'informations: </h3>
 <ul>
   <li> <a href="https://www.meteor.com/tutorials/blaze/collections"> Tutoriel Meteor </a> </li>
   <li> <a href="https://guide.meteor.com/collections.html"> Documentation API </a> </li>
 </ul>
 <br/>
-<h3> Les méthodes </h3>
+<h3> Crées des méthodes </h3>
 <p> J'introduis cette notion assez tôt pour plusieurs raisons: déjà car avoir de bonnes habitudes en termes de sécurité est toujours un plus, mais surtout car utiliser des méthodes est, à mon sens, plus simple et plus utile. Un des gros avantages de cette façon de travailler est de ne pas avoir besoin de retapper des lignes et des lignes de code pour intéragire avec la base de données. En effet, il suffit d'appeller la méthode en lui passant les bons arguments et c'est fait! </p>
 <p> <b> Mais c'est quoi une méthode? </b> Excellente question! Une méthode est une fonction. Voilà, rien de plus. Mais pourquoi l'appellation n'est pas juste "fonction"? Eh bien un méthode est toujours liée à un objet, ici une collection. et une collection (ou une table en SQL) n'est rien d'autre qu'un objet et une fonction liée à un objet est une méthode. Cela peut sembler flou pour le moment, mais ne vous en faites pas! </p>
 <h4> Déclarer une méthode et l'appeller </h4>
