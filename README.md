@@ -179,6 +179,32 @@ La structure par défaut est la suivante: </p>
 </pre>
 <p> "Macollec" devrait toujours prendre une majuscule et sera utilisé pour référencer la collection dans le JavaScript lors de méthodes telles que Macollec.insert({...}) ou Macollec.find({...}). "maCollec" sera utilisé surtout dans l'invite de commande et pour certaines reéférences moins importantes. <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/api/liste_elem.js">Ce fichier</a> en est un exemple.</p>
 <p> <a href="#-liens-entre-fichiers-">Une fois les liens entre fichiers fait correctement</a>, la base de données est liée à la page ou au template et le contenu de la page sera mis à jour automatiquement lorsque du contenu sera ajouté, modifié ou supprimé de la base de collection.</p>
+<p>Dans cet exemple:<i><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body3.js">body3.js</a></i>, on a une <i><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/api/liste_elem.js">collection</a></i> qui affiche des éléments dans une liste. Les lignes importantes sont:</p>
+<pre>
+  Template.zoneListe.helpers({
+	elem() {
+    return Elem.find({});
+  },
+});
+</pre>
+<p>Avant, le helper de "elem" affichait une liste <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body2.js">écrite dans le code</a>. Maintenant, "elem" est devenu une fonction qui "trouve" ("find({})"), dans une collection, des éléments à afficher dans une liste. Le processus peut paraître flou pour le moment, mais ce qu'il faut comprendre c'est que la méthode .find({}) va chercher, écrite ainsi, tous les élément de la collection.</p>
+<h3> Events et méthodes pour les bases de donées </h3>
+<p><b>C'est sympa mais y a rien qui s'affiche!</b> Bah oui, il faut bien remplir la base de donées. Ce qu'il faut savoir, c'est que la BD avec mongoDB et meteor sera locale pour les phases de programmation et de test, de ce fait, lorsque vous avez téléchargé ce kit, la base de donées est vide. Il faut donc la remplir! On peut passer par le terminal ou l'invite de commande, amsi le plus simple serait de coder une fonction qui ajoute un élément à la collection. Faisons celà. <i><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body4.js">body4.js</a></i></p>
+<pre>
+  Template.ajout.events({
+	'submit .new-elem': function(event){
+		event.preventDefault();
+		const target = event.target;
+		const text = target.texteElem.value;
+		Elem.insert({
+			elementListe: text,
+			createdAt: new Date(),
+		});
+		target.texteElem.value = "";
+	}
+});
+</pre>
+<p>Dans le template <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/template/ajout.html"> ajout.html</a>, on a un formulaire (<pre> "<"form">" </pre>) qui contient un input et un bouton. Le formulaire à la classe "new-elem". Il pourrait aussi avoir un id, mais ici, ce n'est pas forcément nécessaire de faire la différence.</p>
 <h3> Pour plus d'informations: </h3>
 <ul>
   <li> <a href="https://www.meteor.com/tutorials/blaze/collections"> Tutoriel Meteor </a> </li>
