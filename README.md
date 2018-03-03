@@ -29,6 +29,9 @@
   <li> <a href="#-la-structure-des-dossiers-">La structure des dossiers </a></li>
   <li> <a href="#-les-templates-">Les templates</a></li>
   <li> <a href="#-bases-de-donn%C3%A9es-mongodb-">Bases de données (mongoDB)</a></li>
+  <li> <a href="#-comptes-utilisateurs-">Les comptes utilisateurs</a> </li>
+  <li> <a href="#-publish-and-subscribe-">Publish and Subscribe</a></li>
+  <li> <a href="#-conclusion-">Conclusion</a></li>
   </ul>
 <h1> Utilisation </h1>
 <p> "C'est bien joli tout ça mais je fais quoi?" Eh bien il faut télécharger le projet et, après avoir installé Meteor, il suffit de lancer le serveur (s'assurer d'être dans le dossier du projet et taper "meteor" dans l'invite de commande)! Très simple!</p>
@@ -233,32 +236,67 @@ La structure par défaut est la suivante: </p>
 <br/>
 <h3> Crées des méthodes </h3>
 <p> J'introduis cette notion assez tôt pour plusieurs raisons: déjà car avoir de bonnes habitudes en termes de sécurité est toujours un plus, mais surtout car utiliser des méthodes est, à mon sens, plus simple et plus utile. Un des gros avantages de cette façon de travailler est de ne pas avoir besoin de retapper des lignes et des lignes de code pour intéragire avec la base de données. En effet, il suffit d'appeller la méthode en lui passant les bons arguments et c'est fait! </p>
+<p> Pour voir les effets des méthodes, on peut enlever insecure, un plugin par défaut dans Meteor. Entrez "meteor remove insecure" dans le terminal et voilà, les <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body4.js">premiers body#.js qui n'utilisent pas des méthodes </a> ne peuvent plus être utilisés! Pour palier à ça, il va falloir créer et appeller des méthodes. Commençons</p> 
 <p> <b> Mais c'est quoi une méthode? </b> Excellente question! Une méthode est une fonction. Voilà, rien de plus. Mais pourquoi l'appellation n'est pas juste "fonction"? Eh bien un méthode est toujours liée à un objet, ici une collection. et une collection (ou une table en SQL) n'est rien d'autre qu'un objet et une fonction liée à un objet est une méthode. Cela peut sembler flou pour le moment, mais ne vous en faites pas! </p>
 <h4> Déclarer une méthode et l'appeller </h4>
 <p> Déclarer un méthode est très simple: dans le fichier de la collection (<a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/api/liste_elem.js">..imports/api/liste_elem.js</a>) il suffit de taper:</p>
 <pre>
 Meteor.<span color="lightblue">methods</span>({
-    <span color="lightgreen">'maMethode'</span>(<i><span color="orange">argument1</span></i>, <i><span color="orange">argument2</span></i>, ...){
-        <span color="lightblue">check</span>(argument1, <i color="lightblue">type</i>);
-        <span color="lightblue">check</span>(argument2, <i color="lightblue">type</i>);
-        .
-        .
-        .
-        Macollec.insert/remove/update/...({
-            //code goes here
-        });
-    },
-    <span color="lightgreen">'maMethode2'</span>(<i><span color="orange">argument1</span></i>, <i><span color="orange">argument2</span></i>, ...){
-        <span color="lightblue">check</span>(argument1, <i color="lightblue">type</i>);
-        <span color="lightblue">check</span>(argument2, <i color="lightblue">type</i>);
-        .
-        .
-        .
-        Macollec.insert/remove/update/...({
-            //code goes here
-        });
-    }
+  <span color="lightgreen">'maMethode'</span>(<i><span color="orange">argument1</span></i>, <i><span color="orange">argument2</span></i>, ...){
+    <span color="lightblue">check</span>(argument1, <i color="lightblue">type</i>);
+    <span color="lightblue">check</span>(argument2, <i color="lightblue">type</i>);
+    .
+    .
+    .
+    Macollec.insert/remove/update/...({
+        //code goes here
+    });
+  },
+  <span color="lightgreen">'maMethode2'</span>(<i><span color="orange">argument1</span></i>, <i><span color="orange">argument2</span></i>, ...){
+    <span color="lightblue">check</span>(argument1, <i color="lightblue">type</i>);
+    <span color="lightblue">check</span>(argument2, <i color="lightblue">type</i>);
+    .
+    .
+    .
+    Macollec.insert/remove/update/...({
+        //code goes here
+    });
+  }
 })
 </pre>
 <p><b>Meteor.methods</b> signale que l'on crée une liste de méthodes. Les <b>check()</b> sont des fonctions qui vont vérifier que les arguments correspondent à un certain type (<i>String, Int, Float, Boolean, etc</i>). Le but de cette vérification est de s'assurer que l'utilisateur ne puisse pas entrer n'importe quoi et renforce donc la sécurité de l'application. La suite est très simple: <b>Macollec.insert()</b> permet d'ajouter un élément à la base de donées, <b>Macollec.remove()</b> permet de supprimer un éléement de la BD, <b>Macollec.update()</b> permet de modifier un élément de la BD, etc. Ces trois fonctions sont les plus répendues, donc pour les autres fonctions existantes, <a href="https://docs.mongodb.com/manual/reference/method/js-collection/">consultez la documentation</a></p>
 <p><b>Ok c'est cool, on a nos méthodes; et maintenant?</b> Commençons par parler de leur utilisation. (<i><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body5.js">body5.js</a></i>).</p>
+<h2> Comptes utilisateurs </h2>
+<p><i><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body7.js">body7.js</a></i></p>
+<p>Dans ce cours chapitre, on va voir l'ajout de comptes pour avoir des utilisateurs! En effet, cette fonctionnalité peut s'avérer extrêmement importante! Pour se faire, il faudra installer au moins deux plugins (déjà installés dans ce kit): <a href="https://www.meteor.com/tutorials/blaze/adding-user-accounts">accounts-ui et accounts-password.</a> Une fois les plugins installé, l'ajout du template {{> loginButtons}} crée automatiquement un menu pour enregistrer des comptes et se connecter! Magique non? Pour référencer l'utilisateur dans le JavaScrit, il suffit d'utiliser Meteor.userId() (retourne l'_id de l'utilisateur) et Meteor.user() pour récupérer toutes les infos de l'utilisateur. En HTML, on peut créer des condition avec {{currentUser}} ce qui permet de bloquer l'accès à certaines fonctionnalités pour les utilisateurs non connectés. {{currentUser.argument}} permet de récupérer la valeur de l'argument spécifié. Bref, à vous d'expérimenter avec ça!</p>
+<ul>
+  <li><a href="https://guide.meteor.com/accounts.html">Guide</a></li>
+  <li><a href="https://docs.meteor.com/api/accounts.html">Documentation API</a></li>
+  <li><a href="http://meteortips.com/second-meteor-tutorial/user-accounts/">Improviser sans accounts-ui</a></li>
+</ul>
+<h2> Publish and Subscribe </h2>
+<p><i><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body8.js">body8.js</a></i> et <i><<a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/api/liste_elem.js">liste_elem.js</a></i></p>
+<p>Nous y voilà, maintenant que nous sommes capables de créer une collection, d'y ajouter des instances, de créer et d'utilier des méthodes et d'avoir des utilisateurs, nous voilà fins prêts pour la dernière étape: la sécurité. Plus précisément, le concept de publish et de subscribe.</p>
+<p>L'idée est la suivante: on va privatiser l'accès aux donées. Ce que cela signifie, c'est que certaines données ne seront accessible que par certaines personnes dans certaines conditions. Pour procéder à l'exemple avec <i>body8.js</i>, il faudra supprimer autopublish, il s'agit d'un autre plugin mis par défaut dans l'application pour le prototyping. Utilisez la commandes suivantes dans le terminal: "meteor remove autopublish". Si on reprend temporairement <i><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body7.js">body7.js</a></i>, on pourra voir que la liste de la BD ne s'affiche plus!</p>
+<p>Revenons à <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body8.js">body8.js</a>: on peut constater l'apparistion de la ligne suivante dans le body.onCreated</p>
+<pre>
+  Meteor.subscribe('elems'); 
+</pre>
+<p>Okay cool, qu'est ce que ça veut dire? Eh bien c'est très simple: lorsque le body est créé, on va le subscribe (lui donner accès en gros) à "elems", la base de données. Dans liste_elem.js, c'est une autre histoire:</p>
+<pre>
+  //Condition pour le publish
+  if (Meteor.isServer) {
+    //Publication des éléments de la BD
+      Meteor.publish('elems', function elemsPublication() {
+        return Elem.find({
+            $or: [
+              { private: { $ne: true } },
+              { createur: this.userId },
+            ],
+      });
+    });
+  }
+</pre>
+<p>La condition vérifie que l'on soit du côté du serveur est pas de celui de l'utilisateur (en gros dans une collection), si elle est vraie, alors on va publier les éléments de la liste via la fonction elemsPublication() qui sera référée avec "elems". D'où le "Meteor.subscribe(<b>"elems"</b>)! Bien, ensuite, la requête dans Elem.find() peut sembler bizarre mais ce qu'il faut comprendre c'est que l'on va afficher les tâches privées si l'utilisateur connecté correspond au créateur de l'éléement.</p>
+<h2> Conclusion </h2>
+<p>Nous touchons (déjà!) à la fin de ce kit. Le but était de vous mettre à disposition un répétoire d'exemples avec des explications pour vous aider à démarrer est comme support pour les questions basiques. J'espère sincérement de que ça vous aura été utile, moi perso j'ai beaucoup aimé préparer ce kit! Si vous avez des questions ou des remarques, contactez moi par mail ou faites moi signe dans la sallede classe!</p>
