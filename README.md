@@ -32,6 +32,7 @@
   <li> <a href="#-comptes-utilisateurs-">Les comptes utilisateurs</a> </li>
   <li> <a href="#-publish-and-subscribe-">Publish and Subscribe</a></li>
   <li> <a href="#-conclusion-">Conclusion</a></li>
+  <li> <a href="#-les-exemples-en-detail->Les exemples en détail</a></li>
   </ul>
 <h1> Utilisation </h1>
 <p> "C'est bien joli tout ça mais je fais quoi?" Eh bien il faut télécharger le projet et, après avoir installé Meteor, il suffit de lancer le serveur (s'assurer d'être dans le dossier du projet et taper "meteor" dans l'invite de commande)! Très simple!</p>
@@ -298,5 +299,8 @@ Meteor.<span color="lightblue">methods</span>({
   }
 </pre>
 <p>La condition vérifie que l'on soit du côté du serveur est pas de celui de l'utilisateur (en gros dans une collection), si elle est vraie, alors on va publier les éléments de la liste via la fonction elemsPublication() qui sera référée avec "elems". D'où le "Meteor.subscribe(<b>"elems"</b>)! Bien, ensuite, la requête dans Elem.find() peut sembler bizarre mais ce qu'il faut comprendre c'est que l'on va afficher les tâches privées si l'utilisateur connecté correspond au créateur de l'éléement.</p>
+<br/>
+<br/>
+<h1> Les exemples en détail </h1>
 <h2> Conclusion </h2>
-<p>Nous touchons (déjà!) à la fin de ce kit. Le but était de vous mettre à disposition un répétoire d'exemples avec des explications pour vous aider à démarrer est comme support pour les questions basiques. J'espère sincérement de que ça vous aura été utile, moi perso j'ai beaucoup aimé préparer ce kit! Si vous avez des questions ou des remarques, contactez moi par mail ou faites moi signe dans la sallede classe!</p>
+<p>Nous touchons (déjà!) à la fin de ce kit. Le but était de vous mettre à disposition un répétoire d'exemples avec des explications pour vous aider à démarrer est comme support pour les questions basiques. J'espère sincérement de que ça vous aura été utile, moi perso j'ai beaucoup aimé préparer ce kit! Si vous avez des questions ou des remarques, contactez moi par mail ou faites moi signe dans la salle de classe!</p>
