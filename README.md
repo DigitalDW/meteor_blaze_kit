@@ -408,6 +408,7 @@ Meteor.<span color="lightblue">methods</span>({
 
   <i>//helpers de "titre"</i>
   Template.titre.helpers({
+  
     <i>//on set la valeur "text" pour <\h1>{{text}}<\/h1></i>
     text: function(){
       //on définit est retourne monTexte comme valeur pour "text"
@@ -436,8 +437,10 @@ Meteor.<span color="lightblue">methods</span>({
 <pre>
   <i>//helpers de la zoneListe: zone où les listes sont affichées</i>
   Template.zoneListe.helpers({
+
     <i>//bien référencer le bon template</i>
     elem: [
+
       <i>//utiliser le même nom que dans le HTML: on veut récupérer la valeur "elementListe"</i>
       { elementListe: 'element 1' },
       { elementListe: 'element 2' },
@@ -472,6 +475,7 @@ Meteor.<span color="lightblue">methods</span>({
   .
   <i>//helpers de la zone des liste</i>
   Template.zoneListe.helpers({
+
     <i>//elem devient une fonction qui retourne tous les éléments de la collection "Elem"</i>
     elem() {
       return Elem.find({});
@@ -485,16 +489,20 @@ Meteor.<span color="lightblue">methods</span>({
   <i>//events de ajout.html</i>
   Template.ajout.events({
     'submit .new-elem': function(event){
+
       <i>//empêche le comportement par défaut</i>
       event.preventDefault();
+
       <i>//création de constantes</i>
       const target = event.target;
       const text = target.texteElem.value;
+
       <i>//ajout d'un élément à la BD en fonction du texte entré par l'utilisateur</i>
       Elem.insert({
         elementListe: text,
         createdAt: new Date(),
       });
+
       <i>//reset l'input</i>
       target.texteElem.value = "";
     }
