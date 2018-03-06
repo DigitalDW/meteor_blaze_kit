@@ -87,7 +87,7 @@ Meteor.methods({
 		Elem.update({}, { $set: { selected: false }}, { multi: true } )
 	},
 	//elem.setToPrivate: prend un String et un Boolean comme arguments
-	//Va changer le statut "private" d'un élément en fonction de son id
+	//Va changer le statut "private" d'un élément en fonction de son ids
 	'elem.setToPrivate'(elemID, togglePrivate){
 		check(elemID, String);
 		check(togglePrivate, Boolean);

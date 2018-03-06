@@ -1,18 +1,15 @@
+//importation des méthodes
 import { Template } from 'meteor/templating';
+//importation de la BD
 import { Elem } from '../api/liste_elem.js';
-import { Session } from 'meteor/session'
 
+//importation des fichiers
 import './body.html';
 import './template/titre.html';
 import './template/zoneListe.html';
 import './template/liste.html';
-import './template/ajout.html';
-import './template/demande.html';
 
-Template.body.onCreated(function(){
-	Meteor.call('elem.setSelected');
-})
-
+//on set les conditions de body.html
 Template.body.helpers({
 	ex1: function(){
 		return false
@@ -26,11 +23,12 @@ Template.body.helpers({
 	condition1: function(){
 		return true
 	},
-	condition2: function(){
+	condition_true: function(){
 		return true
 	}
 });
 
+//helpers de "titre"
 Template.titre.helpers({
 	text: function(){
 		monTexte = "Les Bases de Données"
@@ -38,7 +36,9 @@ Template.titre.helpers({
 	},
 });
 
+//helpers de la zone des liste
 Template.zoneListe.helpers({
+	//elem devient une fonction qui retourne tous les éléments de la collection "Elem"
 	elem() {
     return Elem.find({});
   },
