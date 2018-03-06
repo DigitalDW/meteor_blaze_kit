@@ -35,14 +35,14 @@
   <li> <a href="#-les-exemples-en-detail-">Les exemples en détail</a></li>
   <li>Les exemples:
     <ul>
-      <li><a href="#body1.js">body1.js</a></li>
-      <li><a href="#body2.js">body2.js</a></li>
-      <li><a href="#body3.js">body3.js</a></li>
-      <li><a href="#body4.js">body4.js</a></li>
-      <li><a href="#body5.js">body5.js</a></li>
-      <li><a href="#body6.js">body6.js</a></li>
-      <li><a href="#body7.js">body7.js</a></li>
-      <li><a href="#body8.js">body8.js</a></li>
+      <li><a href="#body1js">body1.js</a></li>
+      <li><a href="#body2js">body2.js</a></li>
+      <li><a href="#body3js">body3.js</a></li>
+      <li><a href="#body4js">body4.js</a></li>
+      <li><a href="#body5js">body5.js</a></li>
+      <li><a href="#body6js">body6.js</a></li>
+      <li><a href="#body7js">body7.js</a></li>
+      <li><a href="#body8js">body8.js</a></li>
     </ul>
   </li>
   </ul>
