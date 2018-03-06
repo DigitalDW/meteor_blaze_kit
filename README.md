@@ -32,7 +32,19 @@
   <li> <a href="#-comptes-utilisateurs-">Les comptes utilisateurs</a> </li>
   <li> <a href="#-publish-and-subscribe-">Publish and Subscribe</a></li>
   <li> <a href="#-conclusion-">Conclusion</a></li>
-  <li> <a href="#-les-exemples-en-detail->Les exemples en détail</a></li>
+  <li> <a href="#-les-exemples-en-detail-">Les exemples en détail</a></li>
+  <li>Les exemples:
+    <ul>
+      <li><a href="#body1.js">body1.js</a></li>
+      <li><a href="#body2.js">body2.js</a></li>
+      <li><a href="#body3.js">body3.js</a></li>
+      <li><a href="#body4.js">body4.js</a></li>
+      <li><a href="#body5.js">body5.js</a></li>
+      <li><a href="#body6.js">body6.js</a></li>
+      <li><a href="#body7.js">body7.js</a></li>
+      <li><a href="#body8.js">body8.js</a></li>
+    </ul>
+  </li>
   </ul>
 <h1> Utilisation </h1>
 <p> "C'est bien joli tout ça mais je fais quoi?" Eh bien il faut télécharger le projet et, après avoir installé Meteor, il suffit de lancer le serveur (s'assurer d'être dans le dossier du projet et taper "meteor" dans l'invite de commande)! Très simple!</p>
@@ -61,7 +73,7 @@ La structure par défaut est la suivante: </p>
   </li>
 </ul>
 <br/>
-<p>La structure en soit fonctionne, mais Meteor propose une autre structure pour gérer les fichiers qui, à mon sens, est plus logique dans le développement d'un plus grosse application:</p>
+<p>La structure en soit fonctionne, mais Meteor propose une autre structure pour gérer les fichiers qui, à mon sens, est plus logique dans le développement d'une plus grosse application:</p>
 <ul>
   <li>projet_meteor
     <ul>
@@ -199,7 +211,7 @@ La structure par défaut est la suivante: </p>
 <p>Dans cet exemple:<i><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body3.js">body3.js</a></i>, on a une <i><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/api/liste_elem.js">collection</a></i> qui affiche des éléments dans une liste. Les lignes importantes sont:</p>
 <pre>
   Template.zoneListe.helpers({
-	elem() {
+  elem() {
     return Elem.find({});
   },
 });
@@ -209,32 +221,42 @@ La structure par défaut est la suivante: </p>
 <p><b>C'est sympa mais y a rien qui s'affiche!</b> Bah oui, il faut bien remplir la base de donées. Ce qu'il faut savoir, c'est que la BD avec mongoDB et meteor sera locale pour les phases de programmation et de test, de ce fait, lorsque vous avez téléchargé ce kit, la base de donées est vide. Il faut donc la remplir! On peut passer par le terminal ou l'invite de commande, amsi le plus simple serait de coder une fonction qui ajoute un élément à la collection. Faisons celà. <i><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body4.js">body4.js</a></i></p>
 <pre>
   Template.ajout.events({
-	'submit .new-elem': function(event){
-		event.preventDefault();
-		const target = event.target;
-		const text = target.texteElem.value;
-		Elem.insert({
-			elementListe: text,
-			createdAt: new Date(),
-		});
-		target.texteElem.value = "";
-	}
+  'submit .new-elem': function(event){
+    event.preventDefault();
+    const target = event.target;
+    const text = target.texteElem.value;
+    Elem.insert({
+      elementListe: text,
+      createdAt: new Date(),
+    });
+    target.texteElem.value = "";
+  }
 });
 </pre>
-<p>Dans le template <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/template/ajout.html"> ajout.html</a>, on a un formulaire qui contient un input et un bouton. Le formulaire à la classe "new-elem". Il pourrait aussi avoir un id, mais ici, ce n'est pas forcément nécessaire de faire la différence. Dans le JavaScript, on utilise l'événement "submit" qui reconnaît l'appui du bouton ou lorsque l'utilisateur appuie sur la touche "Entrée". Lorsque le submit a lieu, on applique une fonction qui prend comme argument "event". Pour rappel, e mot clé "event" réfère à l'événement (le submit ici) qui vient de se produire. Ainsi, on lui dit d'empêcher le comportement par défaut de la page avec "event.preventdefault()" et on passe à la récupération des donées: la ligne "const target = event.target" c'est pas obligatoire mais il faudra alors garder en tête qu'à la place de "target" à la ligne suivante, il faudra entrer "event.target". Ce que ce "event.target" signifie est assez simple: c'est la cible de l'événement. Ainsi, lorsqu'on récupère la valeur de l'input avec "target.texteElem.value" (un peu comme un document.getElementById) on fait savoir à Meteor que la cible est cet input. Si on a plusieurs inputs, alors il suffit de créer plusieurs constantes avec la même syntaxe que cette ligne: "const maConst = (event.)target.monId.value.". Bien! Maintenant, on appelle la méthode "Macollec.insert({//<i>code goes here</i>})" (ici "Elem.insert"). La syntaxe est assez spécifique mais pas trop compliquée; elle suit la logique suivante: </p>
+<p>Dans le template <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/template/ajout.html"> ajout.html</a>, on a un formulaire qui contient un input et un bouton. Le formulaire à la classe "new-elem". Il pourrait aussi avoir un id, mais ici, ce n'est pas forcément nécessaire de faire la différence. Dans le JavaScript, on utilise l'événement "submit" qui reconnaît l'appui du bouton ou lorsque l'utilisateur appuie sur la touche "Entrée". Lorsque le submit a lieu, on applique une fonction qui prend comme argument "event". Pour rappel, e mot clé "event" réfère à l'événement (le submit ici) qui vient de se produire. Ainsi, on lui dit d'empêcher le comportement par défaut de la page avec "event.preventdefault()" et on passe à la récupération des donées: la ligne "const target = event.target" c'est pas obligatoire mais il faudra alors garder en tête qu'à la place de "target" à la ligne suivante, il faudra entrer "event.target". Ce que ce "event.target" signifie est assez simple: c'est la cible de l'événement. Ainsi, lorsqu'on récupère la valeur de l'input avec "target.texteElem.value" (un peu comme un document.getElementById) on fait savoir à Meteor que la cible est cet input. Si on a plusieurs inputs, alors il suffit de créer plusieurs constantes avec la même syntaxe que cette ligne: "const maConst = (event.)target.monId.value.". Bien! Maintenant, on appelle la fonction "Macollec.insert({//<i>code goes here</i>})" (ici "Elem.insert"). La syntaxe est assez spécifique mais pas trop compliquée; elle suit la logique suivante: </p>
 <ul>
-	<li>attribut1: valeur1,</li>
-	<li>attribut2: valeur2,</li>
-	<li>attribut3: valeur3,</li>
-	<li>...</li>
+  <li>attribut1: valeur1,</li>
+  <li>attribut2: valeur2,</li>
+  <li>attribut3: valeur3,</li>
+  <li>...</li>
 </ul>
-<p>Lors de l'appel de cette méthode, Meteor va ajouter créer une instance de "Elem" dans la base de donées avec certains attributs. Facile non?</p>
+<p>Lors de l'appel de cette fonction, Meteor va créer une instance de "Elem" dans la base de donées avec certains attributs. Facile non? Et le truc génial, c'est que les valeurs des attributs peuvent permettre de modifier la page en temps réel, <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body5.js">exemple...</a></p>
+<p>Ici, on peux voir deux choses: un attribut "selected" a été ajouté et est, par défaut, mis sur False, ainsi qu'une condition "{{#if selected}}" dans <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/template/">liste.html</a>. On comprend donc vite que si "selected" est True, alors la condition sera elle aussi vraie. De ce fait, on peut faire apparaître un template grâce au changement de statut avec:</p>
+<pre>
+  Template.liste.events({
+  'click .liste-li': function(event){
+    event.preventDefault();
+    Meteor.call("elem.editSelect", this._id, !this.selected);
+  }
+});
+</pre>
+<p>Le code reconnaît le click sur un élément ".liste-li" et appelle la méthode "elem.editSelect" en transmettant l'id de l'élément sur lequel on a appuyé ainsi que le paramètre "!this.selected" ce qui revient à dire "l'inverse de l'attribut 'selected' de cet élément".</p>
+<p><b>Woh woh woh. On se calme... Une méthode?</b> Bah oui, un méthode, parlons-en!</p>
 <h3> Pour plus d'informations: </h3>
 <ul>
   <li> <a href="https://www.meteor.com/tutorials/blaze/collections"> Tutoriel Meteor </a> </li>
   <li> <a href="https://guide.meteor.com/collections.html"> Documentation API </a> </li>
 </ul>
-<br/>
 <h3> Crées des méthodes </h3>
 <p> J'introduis cette notion assez tôt pour plusieurs raisons: déjà car avoir de bonnes habitudes en termes de sécurité est toujours un plus, mais surtout car utiliser des méthodes est, à mon sens, plus simple et plus utile. Un des gros avantages de cette façon de travailler est de ne pas avoir besoin de retapper des lignes et des lignes de code pour intéragire avec la base de données. En effet, il suffit d'appeller la méthode en lui passant les bons arguments et c'est fait! </p>
 <p> Pour voir les effets des méthodes, on peut enlever insecure, un plugin par défaut dans Meteor. Entrez "meteor remove insecure" dans le terminal et voilà, les <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body4.js">premiers body#.js qui n'utilisent pas des méthodes </a> ne peuvent plus être utilisés! Pour palier à ça, il va falloir créer et appeller des méthodes. Commençons</p> 
@@ -269,7 +291,7 @@ Meteor.<span color="lightblue">methods</span>({
 <p><b>Ok c'est cool, on a nos méthodes; et maintenant?</b> Commençons par parler de leur utilisation. (<i><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body5.js">body5.js</a></i>).</p>
 <h2> Comptes utilisateurs </h2>
 <p><i><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body7.js">body7.js</a></i></p>
-<p>Dans ce cours chapitre, on va voir l'ajout de comptes pour avoir des utilisateurs! En effet, cette fonctionnalité peut s'avérer extrêmement importante! Pour se faire, il faudra installer au moins deux plugins (déjà installés dans ce kit): <a href="https://www.meteor.com/tutorials/blaze/adding-user-accounts">accounts-ui et accounts-password.</a> Une fois les plugins installé, l'ajout du template {{> loginButtons}} crée automatiquement un menu pour enregistrer des comptes et se connecter! Magique non? Pour référencer l'utilisateur dans le JavaScrit, il suffit d'utiliser Meteor.userId() (retourne l'_id de l'utilisateur) et Meteor.user() pour récupérer toutes les infos de l'utilisateur. En HTML, on peut créer des condition avec {{currentUser}} ce qui permet de bloquer l'accès à certaines fonctionnalités pour les utilisateurs non connectés. {{currentUser.argument}} permet de récupérer la valeur de l'argument spécifié. Bref, à vous d'expérimenter avec ça!</p>
+<p>Dans ce cours chapitre, on va voir l'ajout de comptes pour avoir des utilisateurs! En effet, cette fonctionnalité peut s'avérer extrêmement importante! Pour se faire, il faudra installer au moins deux plugins (déjà installés dans ce kit): <a href="https://www.meteor.com/tutorials/blaze/adding-user-accounts">accounts-ui et accounts-password.</a> Une fois les plugins installé, l'ajout du template {{> loginButtons}} crée automatiquement un menu pour enregistrer des comptes et se connecter! Magique non? Pour référencer l'utilisateur dans le JavaScrit, il suffit d'utiliser Meteor.userId() (retourne l'_id de l'utilisateur) et Meteor.user() pour récupérer toutes les infos de l'utilisateur. En HTML, on peut créer des condition avec {{currentUser}} ce qui permet de bloquer l'accès à certaines fonctionnalités pour les utilisateurs non connectés. {{currentUser.argument}} permet de récupérer la valeur de l'argument spécifié. N'oublions pas le fichier "../imports/startup/accounts-config.js qui, ici, est très basique, mais qui pourrait contenir beaucoup plus d'infos et/ou de méthodes/spécificités. Bref, à vous d'expérimenter avec ça!</p>
 <ul>
   <li><a href="https://guide.meteor.com/accounts.html">Guide</a></li>
   <li><a href="https://docs.meteor.com/api/accounts.html">Documentation API</a></li>
@@ -299,8 +321,191 @@ Meteor.<span color="lightblue">methods</span>({
   }
 </pre>
 <p>La condition vérifie que l'on soit du côté du serveur est pas de celui de l'utilisateur (en gros dans une collection), si elle est vraie, alors on va publier les éléments de la liste via la fonction elemsPublication() qui sera référée avec "elems". D'où le "Meteor.subscribe(<b>"elems"</b>)! Bien, ensuite, la requête dans Elem.find() peut sembler bizarre mais ce qu'il faut comprendre c'est que l'on va afficher les tâches privées si l'utilisateur connecté correspond au créateur de l'éléement.</p>
-<br/>
-<br/>
-<h1> Les exemples en détail </h1>
+<p>Les bases de donées sont très complexes et peuvent donner du fil à retordre à plus d'une personne, que ce soit par leur structure ou par les habitudes de sécurité à avoir. Pourtant, une fois la logique assimilée et un peu de pratique dans les pattes, je vous jure que c'est plus simple qu'il n'y paraît! Pour vous aider, autant dans les bases de donées que pour votre application en général, je vous listerai, dans la conclusion, les bonnes habitudes à prendre! Mais avant ça, parlons en détail des exemples disponibles dans le kit.</p>
+<h1> Les exemples en detail </h1>
+<p>Parlons exemples, parlons pratique, parlons purement code. Comme vous avez pu le voir, la structure des dossiers est la suivante:</p>
+<ul>
+  <li>projet_meteor
+    <ul>
+      <li>.meteor</li>
+      <li>client
+        <ul>
+          <li>mais.css</li>
+          <li>mais.html</li>
+          <li>mais.js</li>
+        </ul>
+      </li>
+      <li>imports
+        <ul>
+          <li>api
+            <ul>
+              <li>liste_elem.js</li>
+            </ul>
+          </li>
+          <li>ui
+            <ul>
+              <li>template
+                <ul>
+                  <li>ajout.html</li>
+                  <li>bonjour.html</li>
+                  <li>bonjour1.html</li>
+                  <li>demande.html</li>
+                  <li>liste.html</li>
+                  <li>titre.html</li>
+                  <li>zoneListe</li>
+                </ul>
+              </li>
+              <li>body.html</li>
+              <li>body1.js</li>
+              <li>body2.js</li>
+              <li>body3.js</li>
+              <li>body4.js</li>
+              <li>body5.js</li>
+              <li>body6.js</li>
+              <li>body8.js</li>
+              <li>body8.js</li>
+            </ul>
+          </li>
+          <li>startup
+            <ul>
+              <li>accounts-config.js</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>node_modules</li>
+      <li>server</li>
+      <li><i>d'autres fichiers</i></li>
+    </li>
+    <li>node_modules</li>
+    <li>server</li>
+    <li><i>d'autres fichiers</i></li>
+  </ul>
+</ul>
+<p>Commençons par une critique majeur que j'aurais à me faire: les noms des fichiers mélangent anglais et français (reproche qui s'applique d'ailleurs à tout mon code), dans l'idéal j'aurais dû tout faire en anglais. Sinon ma structure suit la structure recommandée donc on est bon sur ce point là.</p>
+<p>Ok, au-delà de ça, parlons du code. Comme vous l'avez très probablment remarqué lors de l'utilisation du kit, le fichier <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body.html">body.html</a> est pour le moins bizarre. En effet, il n'y a presque que des conditions, pire, des conditions dans des conditions, des appels de tamplates et, ne nous arrêtons pas là, certains templates sont eux aussi remplit de conditions! Pourquoi donc? Bah pour que le kit fonctionne correctement en fonction du fichier body#.js séléctionné: d'où les helpers qui définissent les conditions dans chaque body#.js! Maintenant que c'est plus clair, parlons des codes les uns après les autres (surtout le JavaScript, je parlerai du HTML uniquement quand c'est nécessaire).</p>
+<h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body1.js">body1.js</a></h3>
+<p>Ce code est <i>de loin</i> le plus simple. Il n'introduit aucune notion particulière, en effet, à la base il n'y en aurait même pas eu besoin! Mais comme j'ai décidé de faire du titre un template que je définit en dans le JavaScript, bah il y a un peu de contenu. En effet, le focus à ce stade est de voir la différence entre un texte simple avec un balise "p" en HTML et un texte simple définit dans un template, ici <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/template/bonjour1.html">bonjour1.html</a>. Pour parler vite fait des éléments qui seront redondants, voilà ce qu'on peut voir: un helper pour le body qui va définir les états des multiples conditions ainsi qu'un helper pour changer le texte du titre.</p>
+<pre>
+  <i>//On set les valeurs pour les multiples conditions dans body.html</i>
+  Template.body.helpers({
+    ex1: function(){
+      return true
+    },
+    condition: function(){
+      return false
+    },
+    condition0: function(){
+      return true
+    },
+    condition1: function(){
+      return false
+    },
+    condition2: function(){
+      return false
+    }
+  });
+
+  <i>//helpers de "titre"</i>
+  Template.titre.helpers({
+    <i>//on set la valeur "text" pour <\h1>{{text}}<\/h1></i>
+    text: function(){
+      //on définit est retourne monTexte comme valeur pour "text"
+      monTexte = "Les Templates"
+      return monTexte
+    },
+  });
+</pre>
+<P>C'est tout, passons à la suite!</p>
+<h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body2.js">body2.js</a></h3>
+<p>Ce deuxième code nous montre plusieurs choses. Déjà il introduis officielement la notion de Helpers et ce de plusieurs façons: en premier lieu, il présente "officielement" les helpers avec le template "bonjour" en lui attribuant une valeur de type <i>String</i> (lignes 11-21).</p>
+<pre>
+  <i>//la fonction "helpers" va être souvent solicitée pour les fonctionnalités de nos templates
+  //du coup, on référence nos templates par leur nom</i>
+  Template.bonjour.helpers({
+    <i>//on précise quel élément on crée / modifie</i>
+    texte: function(){
+      <i>//ici on met le texte</i>
+      monTexte = "Bonjour, je suis un template remplit en JavaScript!"
+      <i>//on le retourne et voilà!</i>
+      return monTexte
+    },
+  });
+</pre> 
+<p>Ensuite, il présente le concept de liste; en effet, dans les lignes 53 à 62, on définit des valeurs sous la forme d'un tableau.</p>
+<pre>
+  <i>//helpers de la zoneListe: zone où les listes sont affichées</i>
+  Template.zoneListe.helpers({
+    <i>//bien référencer le bon template</i>
+    elem: [
+      <i>//utiliser le même nom que dans le HTML: on veut récupérer la valeur "elementListe"</i>
+      { elementListe: 'element 1' },
+      { elementListe: 'element 2' },
+      { elementListe: 'element 3' },
+    ],
+  });
+</pre>
+<p>Ensuite, dans le <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/template/zoneListe.html">HTML</a>, on met {{#each elem}};</p> 
+<pre>
+  {{#each elem}}
+    {{>liste}}
+  {{/each}}
+</pre>
+<p>ce qui crée un boucle qui tournera autant de fois qu'il y a d'éléments dans le tableau dans le helper en JS. A chaque itération de la boucle, le programme ajoute un template "liste" qui est composé d'un "li" qui prend comme valeur {{elementListe}}, soit l'attribut défini pour chaque élément du tableau! Le résultat est l'affichage d'une liste définie via le JavaScript!</p>
+<h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body3.js">body3.js</a></h3>
+<p>Ce troisième code introduit la notion de collection, ou base de données si vous préfèrez: en gros, au lieu d'avoir une liste statique avec des attributs, on crée une collection qui va contenir les instances de chaque élément:</p>
+<pre>
+  <i>//Import des méthodes</i>
+  import { Meteor } from 'meteor/meteor';
+  import { Mongo } from 'meteor/mongo';
+  import { check } from 'meteor/check';
+
+  <i>//Création d'une constante "Elem" qui servira à référencer la BD dans le code</i>
+  export const Elem = new Mongo.Collection('listeElem');
+</pre>
+<p>Evidemment, si on lance le code tel quel, on va se rendre compte qu'il n'y a rien qui s'affiche, c'est normal: la base de données, pour le prototyping en tout cas, est locale, donc télécharger le projet n'importera pas de données dans la base. Donc ne paniquez pas! D'ailleurs, les éléments sont affichés avec l'instruction suivante:</p>
+<pre>
+  <i>//importation de la BD</i>
+  import { Elem } from '../api/liste_elem.js';
+  .
+  .
+  .
+  <i>//helpers de la zone des liste</i>
+  Template.zoneListe.helpers({
+    <i>//elem devient une fonction qui retourne tous les éléments de la collection "Elem"</i>
+    elem() {
+      return Elem.find({});
+    },
+  });
+</pre>
+<p>Déjà on importe la base de données (BD) dans le projet avec la première ligne de code présentée, ensuite on utilise la méthode "find()" avec comme paramètre de recherche "{}" ce qui peut se traduire en "tout", donc on récupère tous les éléments de la BD et ont les transmet à "elem()". Assez simple non? Si ça joue, passons à la suite!</p>
+<h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body4.js">body4.js</a></h3>
+<p>Qu'est-ce qu'il y a de neuf cette fois? Eh bien déjà il y a un nouveau template, <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/template/ajout.html">ajout.html</a>, et de nouvelles instructions pour ce nouveau template: un Events. Ok, c'est quoi events? Bon si vous avez parcouru ce kit vous le savez, mais définissons ça vite fait. En gros il s'agit d'un addEventListener sauf que qu'on l'applique à un template. Ce que ça veut dire, c'est que si il y a plusieurs éléments dans le template, on peut définir un event séparé pour chacun d'eux. Cool, donc en résumé, avec un Events, on gère le comportement de certains éléments.</p>
+<pre>
+  <i>//events de ajout.html</i>
+  Template.ajout.events({
+    'submit .new-elem': function(event){
+      <i>//empêche le comportement par défaut</i>
+      event.preventDefault();
+      <i>//création de constantes</i>
+      const target = event.target;
+      const text = target.texteElem.value;
+      <i>//ajout d'un élément à la BD en fonction du texte entré par l'utilisateur</i>
+      Elem.insert({
+        elementListe: text,
+        createdAt: new Date(),
+      });
+      <i>//reset l'input</i>
+      target.texteElem.value = "";
+    }
+  });
+</pre>
+<p>Beaucoup d'éléments à la fois, mais ne paniquons pas. En gros on précise le type d'event (ici, submit) sur quel élément (ici, .new-elem) puis on passe l'event en argument de la fonction, ce qui permet de référencer l'événement dans la fonction, et donc d'empêcher le comportement par défaut de la page. Ensuite on crée des constantes: celle qui est plus compliquée est "target" qui vaut donc "event.target"; "event.target" réfère la cible de l'évnement, donc le définir dans une nouvelle variable "target" permet de simplifier la ligne qui suit: au lieu de "const text = event.target.texteElem.value", on écrit juste "const text = target.listeElem.value. Avec un peu de pratique, vous comprenderez (ou au moins ça rentrera). Ensuite on appelle la fonction "Elem.insert({})". ".insert({})" est une fonction qui permet d'insérer un nouvel élément dans une base de données. Du coup, on remplit avec les infos qu'on a/qu'on veut: ici, on a elementListe qui est remplit avec "text" et createdAt qui est remplit avec une date (new Date()).</p>
+<p>Donc pour ajouter un élément, on utilise la fonction "MaCollection.insert({})"! Facile!</p>
+<h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body5.js">body5.js</a></h3>
+
+<h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body6.js">body6.js</a></h3>
+<h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body7.js">body7.js</a></h3>
+<h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body8.js">body8.js</a></h3>
 <h2> Conclusion </h2>
-<p>Nous touchons (déjà!) à la fin de ce kit. Le but était de vous mettre à disposition un répétoire d'exemples avec des explications pour vous aider à démarrer est comme support pour les questions basiques. J'espère sincérement de que ça vous aura été utile, moi perso j'ai beaucoup aimé préparer ce kit! Si vous avez des questions ou des remarques, contactez moi par mail ou faites moi signe dans la salle de classe!</p>
+<p>Nous touchons (déjà!) à la fin de ce kit. Le but était de vous mettre à disposition un répétoire d'exemples avec des explications pour vous aider à démarrer, mais qui puisse daussi servir de support pour les questions basiques. J'espère sincérement de que ça vous aura été utile, moi perso j'ai beaucoup aimé préparer ce kit! Si vous avez des questions ou des remarques, contactez moi par mail ou faites moi signe dans la salle de classe!</p>
