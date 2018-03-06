@@ -408,7 +408,6 @@ Meteor.<span color="lightblue">methods</span>({
 
   <i>//helpers de "titre"</i>
   Template.titre.helpers({
-  
     <i>//on set la valeur "text" pour <\h1>{{text}}<\/h1></i>
     text: function(){
       //on définit est retourne monTexte comme valeur pour "text"
@@ -437,10 +436,8 @@ Meteor.<span color="lightblue">methods</span>({
 <pre>
   <i>//helpers de la zoneListe: zone où les listes sont affichées</i>
   Template.zoneListe.helpers({
-
     <i>//bien référencer le bon template</i>
     elem: [
-
       <i>//utiliser le même nom que dans le HTML: on veut récupérer la valeur "elementListe"</i>
       { elementListe: 'element 1' },
       { elementListe: 'element 2' },
@@ -475,7 +472,6 @@ Meteor.<span color="lightblue">methods</span>({
   .
   <i>//helpers de la zone des liste</i>
   Template.zoneListe.helpers({
-
     <i>//elem devient une fonction qui retourne tous les éléments de la collection "Elem"</i>
     elem() {
       return Elem.find({});
@@ -489,20 +485,16 @@ Meteor.<span color="lightblue">methods</span>({
   <i>//events de ajout.html</i>
   Template.ajout.events({
     'submit .new-elem': function(event){
-
       <i>//empêche le comportement par défaut</i>
       event.preventDefault();
-
       <i>//création de constantes</i>
       const target = event.target;
       const text = target.texteElem.value;
-
       <i>//ajout d'un élément à la BD en fonction du texte entré par l'utilisateur</i>
       Elem.insert({
         elementListe: text,
         createdAt: new Date(),
       });
-
       <i>//reset l'input</i>
       target.texteElem.value = "";
     }
@@ -511,7 +503,6 @@ Meteor.<span color="lightblue">methods</span>({
 <p>Beaucoup d'éléments à la fois, mais ne paniquons pas. En gros on précise le type d'event (ici, submit) sur quel élément (ici, .new-elem) puis on passe l'event en argument de la fonction, ce qui permet de référencer l'événement dans la fonction, et donc d'empêcher le comportement par défaut de la page. Ensuite on crée des constantes: celle qui est plus compliquée est "target" qui vaut donc "event.target"; "event.target" réfère la cible de l'évnement, donc le définir dans une nouvelle variable "target" permet de simplifier la ligne qui suit: au lieu de "const text = event.target.texteElem.value", on écrit juste "const text = target.listeElem.value. Avec un peu de pratique, vous comprenderez (ou au moins ça rentrera). Ensuite on appelle la fonction "Elem.insert({})". ".insert({})" est une fonction qui permet d'insérer un nouvel élément dans une base de données. Du coup, on remplit avec les infos qu'on a/qu'on veut: ici, on a elementListe qui est remplit avec "text" et createdAt qui est remplit avec une date (new Date()).</p>
 <p>Donc pour ajouter un élément, on utilise la fonction "MaCollection.insert({})"! Facile!</p>
 <h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body5.js">body5.js</a></h3>
-
 <h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body6.js">body6.js</a></h3>
 <h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body7.js">body7.js</a></h3>
 <h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body8.js">body8.js</a></h3>
