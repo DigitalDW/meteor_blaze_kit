@@ -41,7 +41,6 @@
       <li><a href="#body4.js">body4.js</a></li>
       <li><a href="#body5.js">body5.js</a></li>
       <li><a href="#body6.js">body6.js</a></li>
-      <li><a href="#-sessions-et-variables-reactives-">Sessions et reactive-var</a></li>
       <li><a href="#body7.js">body7.js</a></li>
       <li><a href="#body8.js">body8.js</a></li>
     </ul>
@@ -418,7 +417,6 @@ Meteor.<span color="lightblue">methods</span>({
 <h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body2.js">body2.js</a></h3>
 <p>Ce deuxième code nous montre plusieurs choses. Déjà il introduis officielement la notion de Helpers et ce de plusieurs façons: en premier lieu, il présente "officielement" les helpers avec le template "bonjour" en lui attribuant une valeur de type <i>String</i> (lignes 11-21).</p>
 <pre>
-  <i>//la fonction "helpers" va être souvent solicitée pour les fonctionnalités de nos templates
   Template.bonjour.helpers({
     texte: function(){
       monTexte = "Bonjour, je suis un template remplit en JavaScript!"
