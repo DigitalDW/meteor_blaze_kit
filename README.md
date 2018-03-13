@@ -638,6 +638,7 @@ Meteor.<span color="lightblue">methods</span>({
     <.strong>{{nomUtilisateur}}<./strong>
     {{elementListe}}
   <./li>
+  <br/>
   <i>JS</i>
   Template.ajout.events({
     'submit .new-elem': function(event){
@@ -653,7 +654,7 @@ Meteor.<span color="lightblue">methods</span>({
       });
 </pre>
 <p>Cool cool, on affiche des noms, mais le vrai fun commence au prochain (et dernier) exemple...</p>
-</h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body8.js">body8.js</a></h3>
+<h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body8.js">body8.js</a></h3>
 <p>Ok, on peut afficher l'auteur d'un élément, cool, mais les autres utilisateurs peuvent modifier ET supprimer les éléments d'autres utilisateurs. Pas bien!</p>
 <p>On peut donner la possibilité de mettre un élément en privé!</p>
 <pre>
@@ -674,13 +675,10 @@ Meteor.<span color="lightblue">methods</span>({
 <pre>
   'elem.remove'(elemID){
     check(elemID, String);
-
     const elem = Elem.findOne(elemID);
-
     if (elem.private && elem.createur !== Meteor.userId()) {
       throw new Meteor.Error('not-authorized, you are not the author of this element');
     }
-
     Elem.remove(elemID);
   },
 </pre>
@@ -689,13 +687,10 @@ Meteor.<span color="lightblue">methods</span>({
   'elem.editName'(elemID, newName){
     check(elemID, String);
     check(newName, String);
-    
     const elem = Elem.findOne(elemID);
-
     if (elem.private && elem.createur !== Meteor.userId()) {
         throw new Meteor.Error('not-authorized');
     }
-
     Elem.update(elemID, { $set: { elementListe: newName } } )
   },
 </pre>
@@ -712,6 +707,7 @@ Meteor.<span color="lightblue">methods</span>({
     });
   }
 </pre>
-<p></p>
+<p>L'opérateur "$or" signifie "ou": en gros, il faut qu'au moins une des conditions dans les [] soit vraie. Donc on a "afficher si private et false ou si l'utilisateur en cours est le créateur de l'élément". Du coup, on trie les éléments et, en en affichant que certains, ont augmente la sécurité de notre application.</p>
+<p>J'espère que c'est clair, sinon demandez-moi en classe!</p>
 <h2> Conclusion </h2>
-<p>Nous touchons (déjà!) à la fin de ce kit. Le but était de vous mettre à disposition un répétoire d'exemples avec des explications pour vous aider à démarrer, mais qui puisse daussi servir de support pour les questions basiques. J'espère sincérement de que ça vous aura été utile, moi perso j'ai beaucoup aimé préparer ce kit! Si vous avez des questions ou des remarques, contactez moi par mail ou faites moi signe dans la salle de classe!</p>
+<p>Nous touchons (déjà!) à la fin de ce kit. Le but était de vous mettre à disposition un répétoire d'exemples avec des explications pour vous aider à démarrer mais qui puisse daussi servir de support pour les questions basiques. J'espère vraiment de que ça vous aura été utile, moi perso j'ai beaucoup aimé préparer ce kit! Si vous avez des questions ou des remarques, contactez moi par mail ou faites moi signe dans la salle de classe! Merci beaucoup de votre attention et codez!</p>
