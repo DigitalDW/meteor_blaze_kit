@@ -35,14 +35,14 @@
   <li> <a href="#-les-exemples-en-detail-">Les exemples en détail</a></li>
   <li>Les exemples:
     <ul>
-      <li><a href="#body1js">body1.js</a></li>
-      <li><a href="#body2js">body2.js</a></li>
-      <li><a href="#body3js">body3.js</a></li>
-      <li><a href="#body4js">body4.js</a></li>
-      <li><a href="#body5js">body5.js</a></li>
-      <li><a href="#body6js">body6.js</a></li>
-      <li><a href="#body7js">body7.js</a></li>
-      <li><a href="#body8js">body8.js</a></li>
+      <li><a href="#body1.js">body1.js</a></li>
+      <li><a href="#body2.js">body2.js</a></li>
+      <li><a href="#body3.js">body3.js</a></li>
+      <li><a href="#body4.js">body4.js</a></li>
+      <li><a href="#body5.js">body5.js</a></li>
+      <li><a href="#body6.js">body6.js</a></li>
+      <li><a href="#body7.js">body7.js</a></li>
+      <li><a href="#body8.js">body8.js</a></li>
     </ul>
   </li>
   </ul>
@@ -387,7 +387,6 @@ Meteor.<span color="lightblue">methods</span>({
 <h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body1.js">body1.js</a></h3>
 <p>Ce code est <i>de loin</i> le plus simple. Il n'introduit aucune notion particulière, en effet, à la base il n'y en aurait même pas eu besoin! Mais comme j'ai décidé de faire du titre un template que je définit en dans le JavaScript, bah il y a un peu de contenu. En effet, le focus à ce stade est de voir la différence entre un texte simple avec un balise "p" en HTML et un texte simple définit dans un template, ici <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/template/bonjour1.html">bonjour1.html</a>. Pour parler vite fait des éléments qui seront redondants, voilà ce qu'on peut voir: un helper pour le body qui va définir les états des multiples conditions ainsi qu'un helper pour changer le texte du titre.</p>
 <pre>
-  <i>//On set les valeurs pour les multiples conditions dans body.html</i>
   Template.body.helpers({
     ex1: function(){
       return true
@@ -406,9 +405,7 @@ Meteor.<span color="lightblue">methods</span>({
     }
   });
 
-  <i>//helpers de "titre"</i>
   Template.titre.helpers({
-    <i>//on set la valeur "text" pour <\h1>{{text}}<\/h1></i>
     text: function(){
       //on définit est retourne monTexte comme valeur pour "text"
       monTexte = "Les Templates"
@@ -421,24 +418,17 @@ Meteor.<span color="lightblue">methods</span>({
 <p>Ce deuxième code nous montre plusieurs choses. Déjà il introduis officielement la notion de Helpers et ce de plusieurs façons: en premier lieu, il présente "officielement" les helpers avec le template "bonjour" en lui attribuant une valeur de type <i>String</i> (lignes 11-21).</p>
 <pre>
   <i>//la fonction "helpers" va être souvent solicitée pour les fonctionnalités de nos templates
-  //du coup, on référence nos templates par leur nom</i>
   Template.bonjour.helpers({
-    <i>//on précise quel élément on crée / modifie</i>
     texte: function(){
-      <i>//ici on met le texte</i>
       monTexte = "Bonjour, je suis un template remplit en JavaScript!"
-      <i>//on le retourne et voilà!</i>
       return monTexte
     },
   });
 </pre> 
 <p>Ensuite, il présente le concept de liste; en effet, dans les lignes 53 à 62, on définit des valeurs sous la forme d'un tableau.</p>
 <pre>
-  <i>//helpers de la zoneListe: zone où les listes sont affichées</i>
   Template.zoneListe.helpers({
-    <i>//bien référencer le bon template</i>
     elem: [
-      <i>//utiliser le même nom que dans le HTML: on veut récupérer la valeur "elementListe"</i>
       { elementListe: 'element 1' },
       { elementListe: 'element 2' },
       { elementListe: 'element 3' },
@@ -455,24 +445,19 @@ Meteor.<span color="lightblue">methods</span>({
 <h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body3.js">body3.js</a></h3>
 <p>Ce troisième code introduit la notion de collection, ou base de données si vous préfèrez: en gros, au lieu d'avoir une liste statique avec des attributs, on crée une collection qui va contenir les instances de chaque élément:</p>
 <pre>
-  <i>//Import des méthodes</i>
   import { Meteor } from 'meteor/meteor';
   import { Mongo } from 'meteor/mongo';
   import { check } from 'meteor/check';
 
-  <i>//Création d'une constante "Elem" qui servira à référencer la BD dans le code</i>
   export const Elem = new Mongo.Collection('listeElem');
 </pre>
 <p>Evidemment, si on lance le code tel quel, on va se rendre compte qu'il n'y a rien qui s'affiche, c'est normal: la base de données, pour le prototyping en tout cas, est locale, donc télécharger le projet n'importera pas de données dans la base. Donc ne paniquez pas! D'ailleurs, les éléments sont affichés avec l'instruction suivante:</p>
 <pre>
-  <i>//importation de la BD</i>
   import { Elem } from '../api/liste_elem.js';
   .
   .
   .
-  <i>//helpers de la zone des liste</i>
   Template.zoneListe.helpers({
-    <i>//elem devient une fonction qui retourne tous les éléments de la collection "Elem"</i>
     elem() {
       return Elem.find({});
     },
@@ -482,20 +467,15 @@ Meteor.<span color="lightblue">methods</span>({
 <h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body4.js">body4.js</a></h3>
 <p>Qu'est-ce qu'il y a de neuf cette fois? Eh bien déjà il y a un nouveau template, <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/template/ajout.html">ajout.html</a>, et de nouvelles instructions pour ce nouveau template: un Events. Ok, c'est quoi events? Bon si vous avez parcouru ce kit vous le savez, mais définissons ça vite fait. En gros il s'agit d'un addEventListener sauf que qu'on l'applique à un template. Ce que ça veut dire, c'est que si il y a plusieurs éléments dans le template, on peut définir un event séparé pour chacun d'eux. Cool, donc en résumé, avec un Events, on gère le comportement de certains éléments.</p>
 <pre>
-  <i>//events de ajout.html</i>
   Template.ajout.events({
     'submit .new-elem': function(event){
-      <i>//empêche le comportement par défaut</i>
       event.preventDefault();
-      <i>//création de constantes</i>
       const target = event.target;
       const text = target.texteElem.value;
-      <i>//ajout d'un élément à la BD en fonction du texte entré par l'utilisateur</i>
       Elem.insert({
         elementListe: text,
         createdAt: new Date(),
       });
-      <i>//reset l'input</i>
       target.texteElem.value = "";
     }
   });
@@ -503,8 +483,233 @@ Meteor.<span color="lightblue">methods</span>({
 <p>Beaucoup d'éléments à la fois, mais ne paniquons pas. En gros on précise le type d'event (ici, submit) sur quel élément (ici, .new-elem) puis on passe l'event en argument de la fonction, ce qui permet de référencer l'événement dans la fonction, et donc d'empêcher le comportement par défaut de la page. Ensuite on crée des constantes: celle qui est plus compliquée est "target" qui vaut donc "event.target"; "event.target" réfère la cible de l'évnement, donc le définir dans une nouvelle variable "target" permet de simplifier la ligne qui suit: au lieu de "const text = event.target.texteElem.value", on écrit juste "const text = target.listeElem.value. Avec un peu de pratique, vous comprenderez (ou au moins ça rentrera). Ensuite on appelle la fonction "Elem.insert({})". ".insert({})" est une fonction qui permet d'insérer un nouvel élément dans une base de données. Du coup, on remplit avec les infos qu'on a/qu'on veut: ici, on a elementListe qui est remplit avec "text" et createdAt qui est remplit avec une date (new Date()).</p>
 <p>Donc pour ajouter un élément, on utilise la fonction "MaCollection.insert({})"! Facile!</p>
 <h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body5.js">body5.js</a></h3>
+<p>Voilà le gros morceau! Le boss qui marque la fin de l'<i>early-game</i>! La grande mache à franchir! Bref, c'est le body5. Qu'est-ce qui s'y passe et pourquoi est-il si important?</p>
+<p>Eh bien il s'agit de l'exemple qui montre une utilisation complète (et abusive d'ailleurs) d'une base de données. Evidemment, pour compliquer la chose, on aurait pu avoir deux, voire trois collections qui s'entremèlent et qui, grâce à de subtils associations, sont liées et fonctionnelles. Mais là on se concentre sur une seule collection (et y a déjà plein de trucs à voir). Commençons!</p>
+<pre>
+  Template.liste.events({
+    'click .liste-li': function(event){
+      event.preventDefault();
+      Meteor.call("elem.editSelect", this._id, !this.selected);
+    }
+  });
+
+  Template.demande.events({
+    'click #edit': function(event){
+      event.preventDefault();
+      let newname = prompt("Entrez un nouvean nom");
+      if(newname != null){
+        Meteor.call("elem.editName", this._id, newname);
+        Meteor.call("elem.editSelect", this._id, !this.selected);
+      }else{
+        Meteor.call("elem.editSelect", this._id, !this.selected);
+        return;
+      }
+    },
+    'click #delete': function(event){
+      event.preventDefault();
+      Meteor.call('elem.remove', this._id);
+    }
+  });
+</pre>
+<p>Déjà on a l'aparition de méthodes qui sont définient dans la collection <a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/api/liste_elem.js">liste_elem.js</a>. Un chose a bien changé aussi: on a désormais un statut "selected" qui est apparu. Qu'est-ce qu'il fait? Eh bien si on regarde le HTML on peut voir:</p>
+<pre>
+  {{#if selected}}
+      {{> demande}}
+      <br/><br/>
+    {{/if}}
+</pre>
+<p>Donc, logiquement, si le statut "seleted" d'un élément de BD passe en true, alors on affiche le template "demande". Ce template demande est un gros morceau, pas tant en HTML mais surtout en terme de fonctionalités: lorsque l'utilisateur clique sur le bouton #edit, un prompte enregistre la nouvelle valeur du nom dans une variable "newname". Ensuite, si l'utilisateur a rentré un nouveau nom, il appelle de méthodes se produit: "elem.editName", qui va prendre l'id de l'élément actuel et la variable "newname" comme arguments.</p>
+<pre>
+  'elem.editName'(elemID, newName){
+    check(elemID, String);
+    check(newName, String);
+
+    <b>Elem.update(elemID, { $set: { elementListe: newName } } )</b>
+  },
+  'elem.editSelect'(elemID, setSelected){
+    check(elemID, String);
+    check(setSelected, Boolean);
+
+    Elem.update(elemID, { $set: { selected: setSelected } } )
+  },
+</pre>
+<p>La ligne en gras le souligne bien: avec l'is qui lui est passé, on fait une query pour le bon élément dans la BD et on change le nom ("elementListe") par le nouveau nom. La deuxième méthode, qui est appellée directement après editName dans le JavaScript, va prendre l'id de l'élément ainsi que l'inverse du statut "selected" de cet élément ("!this.selected"). Du coup il passe de True à False, et donc le template ajout disparaît.</p>
+<p>La dernière fonctionalité est le clique sur le bouton #delete qui va, comme on peut le deviner, appeller une méthode pour supprimer l'élément de la BD et donc le faire disparaître de la liste.</p>
+<pre>
+  'elem.remove'(elemID){
+    check(elemID, String);
+    Elem.remove(elemID);
+  },
+</pre>
+<p>On passe l'id de l'élément sur lequel on clique et on le supprime avec Elem.remove. Très simple donc!</p>
+<p>Pourquoi ai-je parlé d'utilisation "abusive" de la BD dans l'introduction à ce bout de code? Eh bien car si le changement de style via un paramètre d'une collection (ici, selected) peu être très utile, il ne sert qu'à nous compliquer la tâche ici. En effet, le gros problème est que si on recharge la page après avoir ouvert un ou deux menus (templates "ajout" si le statut est True), il seront toujours ouvert! Pas bien! J'ai même dû créer une méthode pour reset les statuts "selected" lors du chargement de la page:</p>
+<h4>body5.js</h4>
+<pre>
+  Template.body.onCreated(function(){
+    Meteor.call('elem.setSelected');
+  })
+</pre>
+<h4>liste_elem.js</h4>
+<pre>
+  'elem.setSelected'(){
+    Elem.update({}, { $set: { selected: false }}, { multi: true } )
+  },
+</pre>
+<p>Ca fonctionne, mais c'est tout sauf optimal. Pourquoi? Eh bien parce que ce n'est pas le but de l'application: l'ouverture de menu devrait être uniquement sur le client et non pas sur le serveur! Comment palier à ça? Le prochain code s'en charge!</p>
 <h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body6.js">body6.js</a></h3>
+<p>Ce code a les mêmes fonctionnalités que le code précédent, mais elles sont mieux gérées grâce aux variables réactives et aux session!</p>
+<p>Ce sont deux notions que j'ai volontairement laissé de côté dans la théorie pour une raison: après une longue discussion entre Isaac et moi, on a décidé qu'il fallait mettre l'accent sur les bases de données. Les sessions et les variables réacitves ne sont pourtant pas moins importante, mais elles sont beaucoup plus simples à comprendre. Un peu de théorie donc...</p>
+<h5> Sessions et variables reactives </h5>
+<p>Session: une session n'est pas une instance avec un utilisateur, comme certains ont tendance à le penser aux premiers abords. Il s'agit d'une variable globale qui n'est définie que durant une session d'utilisation: en d'autres termes, elle est unique à chaque client et elle est reset à chaque fois que l'utilisateur quitte l'application. Mais à quoi ça sert du coup? Bah déjà à ne pas saturer la base de données, mais aussi à rendre l'utilisation plus dynamique est réacitve. Et, encore une fois, c'est beaucoup plus simple! Je veux dire, pour définir une session, on écrit:</p>
+<pre>
+  Session.set(maVar, "valeur");
+</pre>
+<p>Et pour récupérer la valeur on utilise:</p>
+<pre>
+  Session.get(maVar);
+</pre>
+<p>Tout bête! Et très puissant! Dans le code, j'utilise une session pour écrire le nom de l'élément séléctionné par l'utilisateur dans le prompt en tant que placeholder:</p>
+<pre>
+  Template.liste.events({
+    'click .liste-li': function(event, template){
+      event.preventDefault();
+      Session.set("nomElem", this.elementListe);
+  .
+  .
+  .
+
+  Template.demande.events({
+    'click #edit': function(event, template){
+      event.preventDefault();
+      const txt = Session.get("nomElem")
+      let newname = window.prompt("Entrez un nouvean nom",txt);
+  .
+  .
+  .
+</pre>
+<p>Lorque l'utilisateur clique sur un élément pour en ouvrir le menu, je crée une session qui contient le nom de l'élément (le nom étant définit avec "elementListe" dans la base de données) et lorque l'utilisateur choisi d'éditer le nom de l'élément je met la valeur de la session dans le prompt (la notation: "window.prompt("...", var) permet de mettre une valeur par défaut dans le prompt). Le seul défaut est le suivant: si l'utilisateur séléctionne un élément et en ouvre le menu, ouvre le menu d'un autre élément (sans fermer le premier) et modifie le premier, la valeur dans le prompt sera le nom du deuxième élément cliqué. Dans ce cas là donc, il serait préférable d'écrire "window.prompt("...", this.elementListe), ou un truc du genre (j'ai honnêtement pas testé). Ainsi il n'y aura, en principe, pas de conflit. Mais dans mon cas, je pars sur le principe de bonne foie de l'utilisateur pour ne pas faire n'importe quoi. Le but du code étant surtout de montrer que les sessions sont globales.</p>
+<p>Variables réactives: la différence est minime quoique suffisamment importante pour être notée; une variable réactive est limitée à un template. Au delà de ça, elle permet, comme une session, de mieux gérer le templating de façon dynamique et racitve.</p>
+<pre>
+  Template.liste.onCreated(function(){
+    this.selected = new ReactiveVar( false );
+  });
+
+  Template.liste.helpers({
+    selected: function(){
+      return Template.instance().selected.get();
+    }
+  });
+
+  Template.liste.events({
+    'click .liste-li': function(event, template){
+      .
+      .
+      .
+      if(template.selected.get() == false){
+        template.selected.set(true);
+      }else{
+        template.selected.set(false);
+      }
+    }
+  });
+</pre>
+<p>Comme je l'ai dit avant: la variable n'est définie (et utilisée) que dans un template (ici, "liste"). Lors de la génération du template, on y crée une variable réactive qui a false comme valeur par défaut. Ensuite, dans les helpers, on dit qu'on regarde (et modifie) l'instance du template d'après la valeur de la variable (retourne True ou False). Enfin, dans les events, on ajoute l'argument "template" à la fonction de l'event; on en aura besoin pour "template.selected.get()": en effet, on dit "récupère la valeur du statut selected du template". D'ailleurs, notez les méthodes ".get()" et ".set()": le fonctionnement d'une variable réactive est donc <i>très</i> similaire! Et donc la finalité de ce bout de code est d'ouvrir un menu lorsque l'utilisateur clique sur un des éléments de la liste.</p>
+<p><b>Donc la même chose qu'avant, super.</b> Oui, mais maintenant on ne sature plus la base de donnée avec des infos inutiles!</p>
 <h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body7.js">body7.js</a></h3>
-<h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body8.js">body8.js</a></h3>
+<p>Pour celui là je vais faire vite car peu de choses changent et on en a déjà bien parlé dans le kit: ici on ajout des débuts de comptes utilisateurs. Pour rappel: <b>supprimez autopublish et insecure</b> avec <b>meteor remove autopublish</b> et <b>meteor remove insecure</b>!!!</p>
+<p>En gros: on subscribe le code à la BD avec:</p>
+<pre>
+  Meteor.subscribe("elems");
+</pre>
+<p>De ce fait, on peut de nouveau voir les éléments de la liste. Il ne faut pas oublier des les publier:</p>
+<pre>
+  if (Meteor.isServer) {
+    Meteor.publish('elems', function elemsPublication() {
+      return Elem.find({});
+    });
+  }
+</pre>
+<p>Ce que ce code dite, en gros, c'est qu'on publie la base de données sous le nom "elems" (référé dans Meteor.subscribe()!). Ensuite, on ajouter un compte et, lorsque l'on publie un nouvelle élément, on ajoute le nom de l'utilisateur derrière son élément:</p>
+<pre>
+  <i>HTML</i>
+  <.li class="liste-li" onmouseover="this.style.color='#8258FA'" onmouseout="this.style.color='black'">
+    <.strong>{{nomUtilisateur}}<./strong>
+    {{elementListe}}
+  <./li>
+  <i>JS</i>
+  Template.ajout.events({
+    'submit .new-elem': function(event){
+      .
+      .
+      .
+      Elem.insert({
+        elementListe: text,
+        selected: false,
+        createdAt: new Date(),
+        createur: Meteor.userId(),
+        nomUtilisateur: Meteor.user().username,
+      });
+</pre>
+<p>Cool cool, on affiche des noms, mais le vrai fun commence au prochain (et dernier) exemple...</p>
+</h3><a href="https://github.com/DigitalDW/meteor_blaze_kit/blob/master/template_ex/imports/ui/body8.js">body8.js</a></h3>
+<p>Ok, on peut afficher l'auteur d'un élément, cool, mais les autres utilisateurs peuvent modifier ET supprimer les éléments d'autres utilisateurs. Pas bien!</p>
+<p>On peut donner la possibilité de mettre un élément en privé!</p>
+<pre>
+  {{#if body8}}
+    {{#if aCree}}
+      <.button id="toggle-private">
+        {{#if private}}
+          Privé
+        {{else}}
+          Public
+        {{/if}}
+      <./button>
+    {{/if}}
+  {{/if}}
+</pre>
+<p>Il faudra évidemment ajouter un paramètre "private" dans la base de données! Mais je crois que cela ne devrait causer de problème à personne maintenant que vous avez parcouru ce cours :p.</p>
+<p>On peut empêcher un utilisateur de supprimer les éléments d'un autre utilisteur avec:</p> 
+<pre>
+  'elem.remove'(elemID){
+    check(elemID, String);
+
+    const elem = Elem.findOne(elemID);
+
+    if (elem.private && elem.createur !== Meteor.userId()) {
+      throw new Meteor.Error('not-authorized, you are not the author of this element');
+    }
+
+    Elem.remove(elemID);
+  },
+</pre>
+<p>La condition sert justement à empêcher que n'importe qui puisse supprimer un élément. De même pour la modification:</p>
+<pre>
+  'elem.editName'(elemID, newName){
+    check(elemID, String);
+    check(newName, String);
+    
+    const elem = Elem.findOne(elemID);
+
+    if (elem.private && elem.createur !== Meteor.userId()) {
+        throw new Meteor.Error('not-authorized');
+    }
+
+    Elem.update(elemID, { $set: { elementListe: newName } } )
+  },
+</pre>
+<p>Facile. Et si on empêchait le changement du statut "privé" en supprimant le bouton quand ce n'est pas le bon utilisateur?</p>
+<pre>
+  if (Meteor.isServer) {
+    Meteor.publish('elems', function elemsPublication() {
+      return Elem.find({
+          $or: [
+            { private: { $ne: true } },
+            { createur: this.userId },
+          ],
+      });
+    });
+  }
+</pre>
+<p></p>
 <h2> Conclusion </h2>
 <p>Nous touchons (déjà!) à la fin de ce kit. Le but était de vous mettre à disposition un répétoire d'exemples avec des explications pour vous aider à démarrer, mais qui puisse daussi servir de support pour les questions basiques. J'espère sincérement de que ça vous aura été utile, moi perso j'ai beaucoup aimé préparer ce kit! Si vous avez des questions ou des remarques, contactez moi par mail ou faites moi signe dans la salle de classe!</p>
