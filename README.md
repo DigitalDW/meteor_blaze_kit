@@ -41,6 +41,7 @@
       <li><a href="#body4.js">body4.js</a></li>
       <li><a href="#body5.js">body5.js</a></li>
       <li><a href="#body6.js">body6.js</a></li>
+      <li><a href="#-sessions-et-variables-reactives-">Sessions et reactive-var</a></li>
       <li><a href="#body7.js">body7.js</a></li>
       <li><a href="#body8.js">body8.js</a></li>
     </ul>
