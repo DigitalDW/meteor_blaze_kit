@@ -52,8 +52,8 @@ Template.titre.helpers({
 //Helpers de la zone d'affichage des listes -> récupérer les éléments de la BD
 Template.zoneListe.helpers({
 	elem() {
-    return Elem.find({});
-  },
+		return Elem.find({});
+  	},
 });
 
 //Création d'un variable réactive à la création du template "liste"

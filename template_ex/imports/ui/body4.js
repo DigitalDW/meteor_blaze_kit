@@ -8,6 +8,7 @@ import './body.html';
 import './template/titre.html';
 import './template/zoneListe.html';
 import './template/liste.html';
+import './template/ajout.html';
 
 //on set les conditions de body.html
 Template.body.helpers({
@@ -23,7 +24,7 @@ Template.body.helpers({
 	condition1: function(){
 		return true
 	},
-	condition_true: function(){
+	condition2: function(){
 		return true
 	}
 });

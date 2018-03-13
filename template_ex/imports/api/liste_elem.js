@@ -29,6 +29,7 @@ Meteor.methods({
 			elementListe: text,
 			//D'autres éléments créés automatiquement
 			selected: false,
+			private: false,
 			createdAt: new Date(),
 			createur: Meteor.userId(),
 			nomUtilisateur: Meteor.user().username,
@@ -44,7 +45,7 @@ Meteor.methods({
 
 		//Condition: si l'élément est privé et que ce n'est pas le bon utilisateur, faire une erreur
     	if (elem.private && elem.createur !== Meteor.userId()) {
-     		throw new Meteor.Error('not-authorized');
+     		throw new Meteor.Error('not-authorized, you are not the author of this element');
     	}
 
 		Elem.remove(elemID);
