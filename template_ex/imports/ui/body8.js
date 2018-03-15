@@ -56,12 +56,12 @@ Template.zoneListe.helpers({
   	},
 });
 
-//Création d'un variable réactive à la création du template "liste"
+//Création d'une variable réactive à la création du template "liste"
 Template.liste.onCreated(function(){
 	this.selected = new ReactiveVar( false );
 });
 
-//Helpers de liste -> vérifier si elle est séléctionnée et condition d'affichage
+//Helpers de liste -> vérifier si elle est sélectionnée et condition d'affichage
 Template.liste.helpers({
 	selected: function(){
 		return Template.instance().selected.get();
@@ -94,7 +94,7 @@ Template.demande.helpers({
   },
 });
 
-//Events de demande -> clicks:
+//Events de demande -> clics:
 //1) sur #Edit: demander un nouveau nom à l'utilisateur et appeler la méthode "elem.editName"
 //2) sur #delete: appeler la méthode "elem.remove"
 //3) sur #toggle-private": appeler la méthode "elem.setToPrivate"

@@ -8,13 +8,13 @@ import './template/bonjour.html';
 import './template/zoneListe.html';
 import './template/liste.html';
 
-//la fonction "helpers" va être souvent solicitée pour les fonctionnalités de nos templates
+//la fonction "helpers" va être souvent sollicitée pour les fonctionnalités de nos templates
 //du coup, on référence nos templates par leur nom
 Template.bonjour.helpers({
 	//on précise quel élément on crée / modifie
 	texte: function(){
 		//ici on met le texte
-		monTexte = "Bonjour, je suis un template remplit en JavaScript!"
+		monTexte = "Bonjour, je suis un template rempli en JavaScript!"
 		//on le retourne et voilà!
 		return monTexte
 	},

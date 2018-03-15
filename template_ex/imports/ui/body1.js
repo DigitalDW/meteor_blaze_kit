@@ -29,7 +29,7 @@ Template.body.helpers({
 Template.titre.helpers({
 	//on set la valeur "text" pour <h1>{{text}}</h1>
 	text: function(){
-		//on définit est retourne monTexte comme valeur pour "text"
+		//on définit et retourne monTexte comme valeur pour "text"
 		monTexte = "Les Templates"
 		return monTexte
 	},

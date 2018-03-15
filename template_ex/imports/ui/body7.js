@@ -51,7 +51,7 @@ Template.titre.helpers({
 	},
 });
 
-//helpers de la zone des liste
+//helpers de la zone des listes
 Template.zoneListe.helpers({
 	//elem devient une fonction qui retourne tous les éléments de la collection "Elem"
 	elem() {
@@ -59,7 +59,7 @@ Template.zoneListe.helpers({
   },
 });
 
-//initialistation d'une variable réactive dans le template "liste"
+//initialisation d'une variable réactive dans le template "liste"
 Template.liste.onCreated(function(){
 	this.selected = new ReactiveVar( false );
 });
@@ -89,7 +89,7 @@ Template.liste.events({
 
 //events de demande
 Template.demande.events({
-	//event lors du click sur le bouton #edit
+	//event lors du clic sur le bouton #edit
 	'click #edit': function(event, template){
 		event.preventDefault();
 		//on récupère le nom de l'élément cliqué et demande un nouveau nom à l'utilisateur
@@ -104,7 +104,7 @@ Template.demande.events({
 			return;
 		}
 	},
-	//event lors du click sur le bouton #delete
+	//event lors du clic sur le bouton #delete
 	'click #delete': function(event){
 		event.preventDefault();
 		//appel de la méthode "elem.remove" et on passe l'id de l'élément
@@ -126,7 +126,7 @@ Template.ajout.events({
 			//on set selected sur "false" (tout a fait optionnel maintenant, mais je le garde pour assurer le bon fonctionnement du kit)
 			selected: false,
 			createdAt: new Date(),
-			//on ajoute le nom et l'od de l'utilisateur dans la BD
+			//on ajoute le nom et l'id de l'utilisateur dans la BD
 			createur: Meteor.userId(),
 			nomUtilisateur: Meteor.user().username,
 		});
