@@ -43,7 +43,7 @@ Template.titre.helpers({
 	},
 });
 
-//helpers de la zone des liste
+//helpers de la zone des listes
 Template.zoneListe.helpers({
 	//elem devient une fonction qui retourne tous les éléments de la collection "Elem"
 	elem() {
@@ -64,7 +64,7 @@ Template.liste.events({
 
 //events du template demande
 Template.demande.events({
-	//event lors du click sur le bouton #edit
+	//event lors du clic sur le bouton #edit
 	'click #edit': function(event){
 		event.preventDefault();
 		//demande d'un nouveau nom à l'utilisateur
@@ -82,7 +82,7 @@ Template.demande.events({
 			return;
 		}
 	},
-	//event lors du click sur le bouton #delete
+	//event lors du clic sur le bouton #delete
 	'click #delete': function(event){
 		event.preventDefault();
 		//appel de la méthode "elem.remove" et on passe l'id de l'élément

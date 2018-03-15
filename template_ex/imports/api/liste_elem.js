@@ -36,7 +36,7 @@ Meteor.methods({
 		});
 	},
 	//elem.remove: prend un String comme argument -> ici, l'id de l'élément
-	//Supprime l'éléement correspondant à l'id
+	//Supprime l'élément correspondant à l'id
 	'elem.remove'(elemID){
 		check(elemID, String);
 
@@ -51,7 +51,7 @@ Meteor.methods({
 		Elem.remove(elemID);
 	},
 	//elem.editSelect: prend un String et un Boolean comme arguments
-	//Va changer le statut "selected" de d'un élément en fonction de son id
+	//Va changer le statut "selected" d'un élément en fonction de son id
 	'elem.editSelect'(elemID, setSelected){
 		check(elemID, String);
 		check(setSelected, Boolean);
@@ -66,7 +66,7 @@ Meteor.methods({
 
 		Elem.update(elemID, { $set: { selected: setSelected } } )
 	},
-	//elem.editName: prend deux Strings comme aruguments
+	//elem.editName: prend deux Strings comme arguments
 	//Va changer le nom d'un élément en fonction de son id
 	'elem.editName'(elemID, newName){
 		check(elemID, String);
@@ -88,7 +88,7 @@ Meteor.methods({
 		Elem.update({}, { $set: { selected: false }}, { multi: true } )
 	},
 	//elem.setToPrivate: prend un String et un Boolean comme arguments
-	//Va changer le statut "private" d'un élément en fonction de son ids
+	//Va changer le statut "private" d'un élément en fonction de son id
 	'elem.setToPrivate'(elemID, togglePrivate){
 		check(elemID, String);
 		check(togglePrivate, Boolean);

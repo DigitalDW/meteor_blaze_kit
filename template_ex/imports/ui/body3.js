@@ -36,7 +36,7 @@ Template.titre.helpers({
 	},
 });
 
-//helpers de la zone des liste
+//helpers de la zone des listes
 Template.zoneListe.helpers({
 	//elem devient une fonction qui retourne tous les éléments de la collection "Elem"
 	elem() {
