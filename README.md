@@ -1,9 +1,10 @@
 <h2> Meteor Blaze Kit </h2>
 <p> 
   Bienvenue dans ce README et dans ce projet dans le cadre du cours Programmation pour Internet II! <br/>
-  Vous trouverez ici les informations importantes concernant ce kit ainsi que la liste d'exercices et des exemples. <br/><br/>
-  <b> Infos de contact: </b>
-<p>
+  Vous trouverez ici les informations importantes concernant ce kit ainsi que la liste d'exercices et des exemples. <br/>
+  J'ajoute ici un lien vers le github qui condiendra le(s) exercice(s): <a href="https://github.com/DigitalDW/exemples_divers">exercices et exemples</a><br/>
+</p>
+<b> Infos de contact: </b>
 <ul>
   <li>
     Isaac Pante:
@@ -18,12 +19,12 @@
     </ul>
   </li>
 </ul>
-<p> Tout d'abord, quelques informations concernant l'utilisation du kit: <p>
+<p> Tout d'abord, quelques informations concernant l'utilisation du kit: </p>
 <ul>
   <li> Chaque concept est détaillé ci-dessous </li>
   <li> Des liens directs vers les bons fichiers seront mis à disposition avec chaque exemple </li>
   <li> Pour tester le différents codes, il suffit de télécharger le projet et de changer le chiffre de body#.js à la ligne suivante (selon le code que l'on souhaite exécuter): import '../imports/ui/<b>body#.js</b>'; dans ../client/main.js. (par défaut, "body1.js")</li>
-<ul>
+</ul>
 <h3> Liste des sujets </h3>
 <ul>
   <li> <a href="#-la-structure-des-dossiers-">La structure des dossiers </a></li>
