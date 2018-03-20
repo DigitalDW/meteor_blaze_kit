@@ -53,6 +53,7 @@
 <p> "C'est bien joli tout ça mais je fais quoi?" Eh bien il faut télécharger le projet et, après avoir installé Meteor, il suffit de lancer le serveur (s'assurer d'être dans le dossier du projet et taper "meteor" dans l'invite de commande)! Très simple!</p>
 <p> "Mais l'exemple qui est décrit n'est pas le même, comment faire?" Pour s'assurer de voir le bon résultat sur votre machine, une indication sur le fichier "body#.js" sera donnée au début de chaque explication. Ainsi, il vous suffit d'ouvrir le fichier ../client/main.js et de remplacer la valeur "#" de '../imports/ui/<b>body#.js</b>' par la valeur correspondante et le tour est joué!</p>
 <p> "J'ai d'autres questions qui ne sont pas détaillées ici!" Contactez-moi par mail: loris.rimaz@unil.ch ou demandez-moi en classe. </p>
+<p> J'ajoute ici un lien vers le github qui condiendra le(s) exercice(s): <a href="https://github.com/DigitalDW/exemples_divers">exercices et exemples</a></p>
 <br/>
 <h2> La structure des dossiers </h2>
 <p> Petit chapitre qui reste néanmoins <b> très </b> important pour le début du projet: la structure des dossier et les liens entre fichiers. </p>
