@@ -2,7 +2,7 @@
 <p> 
   Bienvenue dans ce README et dans ce projet dans le cadre du cours Programmation pour Internet II! <br/>
   Vous trouverez ici les informations importantes concernant ce kit ainsi que la liste d'exercices et des exemples. <br/>
-  J'ajoute ici un lien vers le github qui condiendra le(s) exercice(s): <a href="https://github.com/DigitalDW/exemples_divers">exercices et exemples</a><br/>
+  J'ajoute ici un lien vers le github qui condiendra le(s) exercice(s): <a href="https://github.com/DigitalDW/Exemple_MongoDB">exercices BD</a><br/>
 </p>
 <b> Infos de contact: </b>
 <ul>
