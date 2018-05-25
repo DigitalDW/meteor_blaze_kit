@@ -124,7 +124,12 @@ Template.ajout.events({
 		event.preventDefault();
 		const target = event.target;
 		const text = target.texteElem.value;
-		Meteor.call('elem.add', text);
+		Meteor.call('elem.add', text, function(error, result){
+  			Session.set("idElem",result)
+  		})
+		setTimeout(function(){
+			console.log(Session.get("idElem"))
+		},500)
 		target.texteElem.value = "";
 	}
 });

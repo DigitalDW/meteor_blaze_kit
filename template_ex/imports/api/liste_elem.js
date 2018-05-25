@@ -24,7 +24,7 @@ Meteor.methods({
 	//elem.add: prend un String comme argument, ajoute une instance de Elem à la BD
 	'elem.add'(text){
 		check(text, String);
-		Elem.insert({
+		let e = Elem.insert({
 			//C'est ici qu'on ajoute le "text" récupéré 
 			elementListe: text,
 			//D'autres éléments créés automatiquement
@@ -34,6 +34,7 @@ Meteor.methods({
 			createur: Meteor.userId(),
 			nomUtilisateur: Meteor.user().username,
 		});
+		return e
 	},
 	//elem.remove: prend un String comme argument -> ici, l'id de l'élément
 	//Supprime l'élément correspondant à l'id
