@@ -13,6 +13,6 @@ Template.body.onCreated(function(){
 Template.body.events({
     'click #creer': function(){
         let nom = prompt("Entrez un nom pour votre liste !");
-        Meteor.call("creationListe", nom, Meteor.userId())
+        Meteor.call("creationListe", nom, Meteor.userId());
     }
 })

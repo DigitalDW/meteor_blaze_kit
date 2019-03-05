@@ -21,13 +21,9 @@ Meteor.methods({
         console.log("Success !")
         return ajout
     },
-    'supprimerObjet'(id, createur){
+    'supprimerObjet'(id){
         check(id, String);
-        check(createur, String);
         let objet = Objets.findOne(id)
-        if(objet.createur !== createur){
-            throw new Meteor.Error("Vous n'êtes pas authorisé !");
-        }
         Objets.remove(objet)
     }
 })

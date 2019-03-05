@@ -14,7 +14,11 @@ Template.liste.helpers({
     objets: function(){
         let liste = Listes.findOne({ createur: Meteor.userId() })
         if(!liste){
-            liste = {_id: "baseid"}
+            if(Meteor.userId() == null){
+                liste = {_id: "baseid"}
+            }else{
+                liste = {_id: "null"}
+            }
         }
         return Objets.find({ fkListe: liste._id })
     }
