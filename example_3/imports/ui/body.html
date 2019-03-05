@@ -1,0 +1,14 @@
+<body>
+    {{#if currentUser}}
+        {{> loginButtons}}
+        {{> titre}}
+        {{> liste}}
+        {{#if listeExistante}}
+            <button id="creer">Créer une liste</button>
+        {{/if}}
+    {{else}}
+        {{> loginButtons}}
+        {{> helloWorld}}
+        {{> liste}}
+    {{/if}}
+</body>
