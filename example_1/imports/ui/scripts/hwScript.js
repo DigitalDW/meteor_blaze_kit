@@ -3,9 +3,7 @@ import { Template } from "meteor/templating";
 import '../templates/helloWorld.html';
 
 Template.helloWorld.helpers({
-    text: function(){
-        return "Hello World!"
-    }
+    text: () => "Hello World!"
 })
 
 Template.helloWorld.events({

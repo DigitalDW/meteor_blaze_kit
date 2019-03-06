@@ -3,7 +3,11 @@
         {{> loginButtons}}
         {{> titre}}
         {{> liste}}
-        <button id="creer">Créer une liste</button>
+        {{#if existe}}
+            <button id="supprimerListe">Supprimer ma liste</button>
+        {{else}}
+            <button id="creerListe">Créer une liste</button>
+        {{/if}}
     {{else}}
         {{> loginButtons}}
         {{> helloWorld}}

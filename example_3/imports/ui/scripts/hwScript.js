@@ -4,7 +4,7 @@ import '../templates/helloWorld.html';
 
 Template.helloWorld.helpers({
     text: function(){
-        return "Hello World!"
+        return "Demo"
     }
 })
 

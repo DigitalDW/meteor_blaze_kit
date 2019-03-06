@@ -20,5 +20,8 @@ Meteor.methods({
         });
         console.log("Success !")
         return ajout
+    },
+    'suppressionListe'(){
+        
     }
 })
