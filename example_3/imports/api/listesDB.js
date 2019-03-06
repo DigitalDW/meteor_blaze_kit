@@ -21,7 +21,9 @@ Meteor.methods({
         console.log("Success !")
         return ajout
     },
-    'suppressionListe'(){
-        
+    'suppressionListe'(idListe){
+        check(idListe, String);
+        let liste = Listes.findOne(idListe);
+        Listes.remove(liste);
     }
 })

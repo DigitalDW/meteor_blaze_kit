@@ -21,6 +21,14 @@ Template.liste.helpers({
             }
         }
         return Objets.find({ fkListe: liste._id })
+    },
+    estVisible: function(){
+        let liste = Listes.findOne({ createur: Meteor.userId() })
+        if(Meteor.userId() == null || liste){
+            return true
+        }else{
+            return false
+        }
     }
 })
 

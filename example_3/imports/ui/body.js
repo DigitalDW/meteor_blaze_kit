@@ -29,6 +29,10 @@ Template.body.events({
     },
     'click #supprimerListe': function(){
         let verification = confirm("Etes-vous sûr ?");
-        
+        let liste = Listes.findOne({ createur: Meteor.userId() });
+        if(verification){
+            Meteor.call('supprimerObjetsListe', liste._id);
+            Meteor.call('suppressionListe', liste._id);
+        }
     }
 })

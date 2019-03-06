@@ -4,5 +4,7 @@
             {{> objetsListe}}
         {{/each}}
     </ul>
-    <button id="ajouter">Ajouter un objet</button>
+    {{#if estVisible}}
+        <button id="ajouter">Ajouter un objet</button>
+    {{/if}}
 </template>

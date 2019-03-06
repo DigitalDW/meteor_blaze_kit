@@ -25,5 +25,9 @@ Meteor.methods({
         check(id, String);
         let objet = Objets.findOne(id)
         Objets.remove(objet)
+    },
+    'supprimerObjetsListe'(idListe){
+        check(idListe, String);
+        Objets.remove({ fkListe: idListe });
     }
 })
