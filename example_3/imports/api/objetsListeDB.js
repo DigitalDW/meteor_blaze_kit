@@ -18,7 +18,6 @@ Meteor.methods({
             contenu: text,
             fkListe: idListe
         });
-        console.log("Success !")
         return ajout
     },
     'supprimerObjet'(id){
