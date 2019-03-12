@@ -1,5 +1,6 @@
 import { Template } from "meteor/templating";
 import { Meteor } from "meteor/meteor";
+
 // Importer la base de donnees
 import { Objets } from "../../api/objetsListeDB.js"
 
@@ -7,7 +8,7 @@ import { Objets } from "../../api/objetsListeDB.js"
 import '../templates/liste.html';
 import '../templates/objetsListe.html';
 
-// Donner un acces au donnees pour le template "liste"
+// Donner un acces aux donnees de la base Objets pour le template "liste"
 Template.liste.onCreated(function(){
     Meteor.subscribe("objets")
 })
