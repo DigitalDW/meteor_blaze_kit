@@ -2,4 +2,4 @@
 import './body.html';
 import './scripts/hwScript.js';
 import './scripts/listeScript.js';
-alert('hello');
+let maVar = "salut"
