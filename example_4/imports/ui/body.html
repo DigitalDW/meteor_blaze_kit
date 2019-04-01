@@ -1,0 +1,16 @@
+<body>
+    {{#if currentUser}}
+        {{> loginButtons}}
+        {{> titre}}
+        {{> liste}}
+        {{#if existe}}
+            <button id="supprimerListe">Supprimer ma liste</button>
+        {{else}}
+            <button id="creerListe">Créer une liste</button>
+        {{/if}}
+    {{else}}
+        {{> loginButtons}}
+        {{> helloWorld}}
+        {{> liste}}
+    {{/if}}
+</body>
