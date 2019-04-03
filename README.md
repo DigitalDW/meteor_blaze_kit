@@ -20,3 +20,15 @@ La façon la plus simple d'utiliser le kit est de le cloner sur votre ordinateur
 4. Pour le dernier dossier (`template_ex`), il s'agit d'un gros projet avec de nombreuses étapes (en effet, si vous ouvrez le dossier `template_ex/imports/ui/`, vous pourrez voir une multitudes de fichiers avec le nom `body#.js`). Pour voir l'évolution du code, allez dans le dossier `template_ex/client/` et remplacez le chiffre à la ligne suivante dans le fichier `main.js`: `import '../imports/ui/body1.js';`.
 
 **Voilà** ! En principe vous devriez pouvoir utiliser le kit. Si vous avez des problèmes, des remarques ou des suggestions, n'hésitez pas à nous envoyer un mail ou à nous poser des questions pendant le cours !
+
+## Description des exemples
+
+### Exemple 1
+
+Un petit exemple simple qui vous montre comment un helper permet de modifier le contenu de la page. En effet, la liste est remplie à l'aide d'un helper dans le fichier `./imports/ui/scripts/listeScript.js`
+ 
+### Exemple 2
+
+Cet exemple vise à mettre en place deux éléments: les events et les bases de données. Lors du clic sur le bouton, le navigateur demande un nom à l'utilisateur. Ce nom sera alors ajouté à la base de données et aussi tôt affiché. La base de données est créée dans le fichier `./imports/api/objetsListe.js`. Il ne faut pas oublier de l'initialiser sur le serveur dans le fichier `./server/main.js` et de l'importer dans les fichiers nécessaires (tels que `./imports/ui/scripts/listeScript.js`) et le tour est joué !
+
+
