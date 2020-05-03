@@ -8,9 +8,8 @@
     "visualize": "meteor --production --extra-packages bundle-visualizer"
   },
   "dependencies": {
-    "@babel/runtime": "^7.1.5",
-    "meteor-node-stubs": "^0.4.1",
-    "mongol": "^0.2.1"
+    "@babel/runtime": "^7.7.4",
+    "meteor-node-stubs": "^0.4.1"
   },
   "meteor": {
     "mainModule": {
