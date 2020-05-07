@@ -1,0 +1,28 @@
+<template name="login">
+  <div>
+    <span>Nom d'utilisateur:</span>
+    <input type="text" name="nom_utilisateur" id="nom_utilisateur" />
+  </div>
+  <div>
+    <span>Mot de passe:</span>
+    <input type="password" name="mdp" id="mdp" />
+  </div>
+  {{#if nouveau}}
+  <div>
+    <span>Confirmer mot de passe:</span>
+    <input type="password" name="mdp_conf" id="mdp_conf" />
+  </div>
+  <div>
+    <span>Votre age:</span>
+    <input type="number" name="age" id="age" />
+  </div>
+  <div>
+    <span>Le nom de votre animal de compagnie (optionel):</span>
+    <input type="text" name="animal" id="animal" />
+  </div>
+  <button id="creer_compte">Creer un compte</button>
+  {{else}}
+  <button id="connexion">Se connecter</button>
+  <button id="nouvelle_connexion">Creer un compte</button>
+  {{/if}}
+</template>
