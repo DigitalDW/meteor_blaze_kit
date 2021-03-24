@@ -6,7 +6,7 @@ Bienvenue dans ce README et dans ce projet dans le cadre du cours Programmation 
 
 * Isaac Pante:
     * [isaac.pante@unil.ch](mailto:isaac.pante@unil.ch)
-* Isaac Pante:
+* Loris Rimaz:
     * [loris.rimaz@unil.ch](mailto:loris.rimaz@unil.ch)
 
 ## Comment utiliser le kit:
