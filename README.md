@@ -31,4 +31,5 @@ Un petit exemple simple qui vous montre comment un helper permet de modifier le 
 
 Cet exemple vise à mettre en place deux éléments: les events et les bases de données. Lors du clic sur le bouton, le navigateur demande un nom à l'utilisateur. Ce nom sera alors ajouté à la base de données et aussi tôt affiché. La base de données est créée dans le fichier `./imports/api/objetsListe.js`. Il ne faut pas oublier de l'initialiser sur le serveur dans le fichier `./server/main.js` et de l'importer dans les fichiers nécessaires (tels que `./imports/ui/scripts/listeScript.js`) et le tour est joué !
 
+### Exemple 3
 
