@@ -1,0 +1,16 @@
+<template name="app_body">
+  <header>
+    <h1 style="display: inline-block;">LOLris (tm)</h1>
+    {{#if currentUser}} Bonjour {{utilisateur}}
+    <button id="logout">Se déconnecter</button>
+    {{else}}
+    <button id="login">Se connecter</button>
+    {{/if}}
+  </header>
+  <div class="btn-group">
+    <button id="accueil">Accueil</button>
+    <button id="tele">Telecharger</button>
+    <button id="contact">Contactez-nous</button>
+  </div>
+  {{> Template.dynamic template=main}}
+</template>

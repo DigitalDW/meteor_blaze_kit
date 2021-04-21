@@ -1,0 +1,13 @@
+<template name="listeMain">
+    {{> loginButtons}}
+    {{#if currentUser}}
+        {{> titre}}
+        {{> listeFinale}}
+        {{#if existe}}
+            <button id="supprimerListe">Supprimer ma liste</button>
+        {{else}}
+            <button id="creerListe">Créer une liste</button>
+        {{/if}}
+    {{/if}}
+    <button id="retour">Retour</button>
+</template>

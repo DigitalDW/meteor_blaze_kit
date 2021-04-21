@@ -1,5 +1,5 @@
 {
-  "name": "example_1",
+  "name": "myApp",
   "private": true,
   "scripts": {
     "start": "meteor run",
@@ -8,10 +8,9 @@
     "visualize": "meteor --production --extra-packages bundle-visualizer"
   },
   "dependencies": {
-    "@babel/runtime": "^7.1.5",
-    "meteor-node-stubs": "^0.4.1",
-    "mongodb": "^3.1.13",
-    "mongol": "^0.2.1"
+    "@babel/runtime": "^7.11.2",
+    "jquery": "^3.5.1",
+    "meteor-node-stubs": "^1.0.1"
   },
   "meteor": {
     "mainModule": {
